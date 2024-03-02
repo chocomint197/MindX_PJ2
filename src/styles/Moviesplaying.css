@@ -250,6 +250,10 @@
     margin-bottom: 5px;
 }
 
+.categories-and-time .running-time {
+    margin: 0 !important;
+}
+
 .movie-now-title {
     font-size: 20px;
     line-height: 1.3;
