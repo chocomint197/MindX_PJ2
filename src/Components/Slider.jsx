@@ -1,39 +1,49 @@
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Slider.css";
+import "../styles/Trailerpopup.css"
 import { FirebaseContext } from "../../Firebase/FirebaseProvider";
 import React, { useState, useEffect, useContext } from "react";
 import { query, limit, getDocs } from "firebase/firestore";
 import { FaTwitter, FaFacebookF, FaPinterestP } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa6";
+import ReactPlayer from "react-player";
+import { ImCancelCircle } from "react-icons/im";
 
-function ThumbnailSlider({ imageTrailers, videoTrailers, activeIndex }) {
-  // mini slider
-  //handle dragger mini trailers
-  const [isDown, setIsDown] = useState(false);
-  const [startX, setStartX] = useState(null);
-  const [scrollLeft, setScrollLeft] = useState(null);
-  const handleMouseDown = (e) => {
-    setIsDown(true);
-    setStartX(e.pageX - e.currentTarget.offsetLeft);
-    setScrollLeft(e.currentTarget.scrollLeft);
+function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(null); 
+
+// set popup cho trailer
+  const handleSelect = (selectedIndex) => {
+    setActiveIndex(selectedIndex);
   };
 
-  const handleMouseLeave = () => {
-    setIsDown(false);
+  const handlePlayButtonClick = (videoUrl, index) => {
+    setSelectedVideoIndex(index);
+    setSelectedVideoUrl(videoUrl);
+    setShowPopup(true);
   };
 
-  const handleMouseUp = () => {
-    setIsDown(false);
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  const popupStyle = {
+    display: showPopup ? 'flex' : 'none'
   };
 
-  const handleMouseMove = (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - e.currentTarget.offsetLeft;
-    const walk = (x - startX) * 1; 
-    e.currentTarget.scrollLeft = scrollLeft - walk;
-  };
+// set interval
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveIndex((prevIndex) =>
+        prevIndex === imageTrailers.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [imageTrailers.length]);
 
   return (
     <div className="trailer-slider-wrapper">
@@ -43,22 +53,31 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, activeIndex }) {
         className="arrow-trailer"
       />
       <span className="text-trailer">Trailers</span>
-      <div
-        className="trailer-slider"
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
+      <div className="custom-carousel-dots-container">
+        {imageTrailers.map((_, index) => (
+          <div
+            key={index}
+            className={`custom-carousel-dot ${
+              index === activeIndex ? "active" : ""
+            }`}
+            onClick={() => handleSelect(index)}
+          ></div>
+        ))}
+      </div>
+      <Carousel controls={false} indicators={false} interval={null}>
         {imageTrailers.map((trailer, index) => (
-          <div className="trailer-draggable" key={index}>
+          <Carousel.Item key={index} className="trailer-draggable">
             <div className="drag-track">
               <div className="slick-slide">
                 <div className="movie-trailer-item">
-                <div className={`movie-trailer-media ${imageTrailers[index].id === activeIndex ? 'active' : ''}`}>
-                    <img src={trailer} />
+                  <div className="movie-trailer-media">
+                    <img src={trailer} alt={`Trailer ${index + 1}`} />
                     <div className="has-trailer">
-                      <div className="trailer-video" src={videoTrailers[index]}>
+                      <div
+                        className="trailer-video"
+                        onClick={() => handlePlayButtonClick(videoTrailers[index], index)}
+                        
+                      >
                         <FaPlay className="trailer-play" />
                       </div>
                     </div>
@@ -66,31 +85,40 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, activeIndex }) {
                 </div>
               </div>
             </div>
-          </div>
+          </Carousel.Item>
         ))}
-      </div>
+      </Carousel>
+
+      {/* Popup trailer */}
+      {showPopup && (
+    <div className="trailer-popup" style={popupStyle}>
+    <div className="trailer-popup-container fullscreen">
+            <div className="trailer-popup-content">
+            <ImCancelCircle className="close-button" onClick={handleClosePopup}/>
+                
+              <div className="trailer-here">
+              <ReactPlayer
+              url={selectedVideoUrl}
+              width="100%"
+              height="100%"
+              controls={false}
+            />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 function Slider() {
-  // big slider
   const { app, messCollect } = useContext(FirebaseContext);
   const [carouselItems, setCarouselItems] = useState([]);
-  const [bigSliderImages, setBigSliderImages] = useState([]);
-  const [trailers, setTrailers] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-
-  const handleBigSliderChange = (selectedIndex) => {
-    setActiveIndex(selectedIndex);
-  };
-  
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Lấy data từ Firestore và  chỉ lấy 3 item đầu tiên để render ra slider
         const q = query(messCollect, limit(3));
         const snapshot = await getDocs(q);
         const data = snapshot.docs.map((doc) => ({
@@ -98,27 +126,17 @@ function Slider() {
           ...doc.data(),
         }));
         setCarouselItems(data);
-        // truyen hinh anh xuong mini slider
-        const images = data.map((item) => item.img);
-        setBigSliderImages(images);
-        // truyen link trailer xuong mini slider
-        const videos = data.map((item) => item.videoTrailer);
-        setTrailers(videos);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
     };
 
     fetchData();
-
-    return () => {};
   }, [app, messCollect]);
-
-   
 
   return (
     <div className="main-slider">
-      <Carousel controls={false} indicators={false} activeIndex={activeIndex} interval={2000}>
+      <Carousel controls={false} indicators={false} interval={5000}>
         {carouselItems.map((item) => (
           <Carousel.Item className="big-slider" key={item.id}>
             <img src={item.img} alt={item.nameFilm} />
@@ -173,10 +191,10 @@ function Slider() {
         ))}
       </Carousel>
       <ThumbnailSlider
-        imageTrailers={bigSliderImages}
-        videoTrailers={trailers}
-        activeIndex={activeIndex}
-        />
+        imageTrailers={carouselItems.map((item) => item.img)}
+        videoTrailers={carouselItems.map((item) => item.videoTrailer)}
+        onPlayButtonClick={(videoUrl) => setShowPopup(true)}
+      />
     </div>
   );
 }

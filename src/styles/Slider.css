@@ -396,7 +396,7 @@
 
 
 /* carousel */
-.carousel-item {
+/* .carousel-item {
   transition: transform 0.6s ease;
   overflow: hidden; 
 }
@@ -434,4 +434,43 @@
 }
 .carousel-fade .carousel-item.active {
   opacity: 1;
+} */
+.carousel-indicators {
+  display: none;
+}
+.custom-carousel-dots-container {
+  position: absolute;
+  top : 20px;
+  right: 50px;
+}
+.custom-carousel-dot {
+  text-align: center;
+  margin-top: 10px; 
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5); 
+  margin: 0 5px; 
+  cursor: pointer;
+ 
+}
+
+.custom-carousel-dot.active {
+  background-color: #fff
+}
+
+.custom-carousel-dot:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.carousel-inner {
+  display:flex;
+  flex-direction: row;
+}
+
+.movie-trailer-media .active {
+  border: 2px solid #d96c2c;
+
 }
