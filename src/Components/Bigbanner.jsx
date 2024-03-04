@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Bigbanner.css";
 import { PiFilmReelBold } from "react-icons/pi";
 import { FaPlay } from "react-icons/fa";
-
+import Trailer from "./Trailer";
 export default function Bigbanner() {
+  const [isPopupOpen, setIsOpen] = useState(false); // popup handle state
+  
+  
+  const handleOpenPopup = () => {
+    setIsOpen(true);
+  };
+
   return (
     <div className="bigbanner">
       <div className="bigbanner-overlay"></div>
@@ -60,7 +67,7 @@ export default function Bigbanner() {
               <div className="bigbanner-right-container">
                 <div className="video-text">
                   <div className="text">Watch the trailer</div>
-                  <div className="icon-content-view">
+                  <div className="icon-content-view" onClick={handleOpenPopup}>
                     <div className="content-video-btn">
                       <FaPlay className="content-video-icon" />
                     </div>
@@ -81,6 +88,11 @@ export default function Bigbanner() {
           </div>
         </div>
       </div>
+      <Trailer
+        isOpen={isPopupOpen}
+        selectedVideoUrl="https://www.youtube.com/watch?v=XHOmBV4js_E" 
+        handleClosePopup={() => setIsOpen(false)} 
+      />
     </div>
   );
 }

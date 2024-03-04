@@ -115,6 +115,7 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
 function Slider() {
   const { app, messCollect } = useContext(FirebaseContext);
   const [carouselItems, setCarouselItems] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -193,7 +194,8 @@ function Slider() {
       <ThumbnailSlider
         imageTrailers={carouselItems.map((item) => item.img)}
         videoTrailers={carouselItems.map((item) => item.videoTrailer)}
-        onPlayButtonClick={(videoUrl) => setShowPopup(true)}
+        // onPlayButtonClick={(videoUrl) => setShowPopup(true)}
+        setShowPopup={setShowPopup}
       />
     </div>
   );

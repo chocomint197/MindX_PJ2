@@ -7,10 +7,19 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Homepage from './Components/Homepage.jsx'
 
+const router= createBrowserRouter([
+  {
+    path: "/",
+    element:<Homepage/>
+  }
+])
 ReactDOM.createRoot(document.getElementById('root')).render(
     <FirebaseProvider>
-      <App />
-    </FirebaseProvider>
+      <RouterProvider router={router}>      
+       <App />
+      </RouterProvider>
+     </FirebaseProvider>
     
 )

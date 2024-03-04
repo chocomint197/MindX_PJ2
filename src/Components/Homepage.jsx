@@ -4,6 +4,11 @@ import Slider from './Slider'
 import Moviesplaying from './Moviesplaying'
 import Featuredmovie from './Featuredmovie'
 import Bigbanner from './Bigbanner'
+import Photogallery from './Photogallery'
+import Upcomingevent from './Upcomingevent'
+import Logoslider from './Logoslider'
+import Ourfeedback from './Ourfeedback'
+import Moviecomingsoon from './Moviecomingsoon'
 
 export default function Homepage() {
   return (
@@ -17,6 +22,11 @@ export default function Homepage() {
             <Moviesplaying/>
             <Featuredmovie/>
             <Bigbanner/>
+            <Photogallery/>
+            <Upcomingevent/>
+            <Logoslider/>
+            <Ourfeedback/>
+            <Moviecomingsoon/>
     </div>
     </div>
   )

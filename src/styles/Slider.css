@@ -351,9 +351,10 @@
   top: 16px;
 }
 
-.slick-slide {
+.drag-track .slick-slide {
   opacity: 1;
   width: 234px;
+  display: flex;
 }
 
 

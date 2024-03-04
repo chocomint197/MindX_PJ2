@@ -4,6 +4,7 @@ import { IoMdSearch } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -59,12 +60,11 @@ export default function Navbar() {
         <div className="navbar-main">
           <ul className="menu">
             <li className="menu-item">
-              <a href="">Home</a>
+            <NavLink to={"/#"}>Home</NavLink>
             </li>
             <li className="menu-item">
-              <a href="" className="arrow-down">
-                Movies
-              </a>
+            <NavLink to={"/#"}>Movies</NavLink>
+
               <ul className="sub-menu">
                 <li>
                   <a href="movie-all">Movies all</a>
