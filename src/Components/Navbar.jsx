@@ -63,64 +63,58 @@ export default function Navbar() {
             <NavLink to={"/#"}>Home</NavLink>
             </li>
             <li className="menu-item">
-            <NavLink to={"/#"}>Movies</NavLink>
+            <NavLink to={"/movies-all"}>Movies</NavLink>
 
               <ul className="sub-menu">
                 <li>
-                  <a href="movie-all">Movies all</a>
+                <NavLink to={"/movies-all"}>Movies All</NavLink>
                 </li>
                 <li>
-                  <a href="movie-now-playing">Movies Now Playing</a>
+                <NavLink to={"/movies-now-playing"}>Movies Now Playing</NavLink>
                 </li>
                 <li>
-                  <a href="movie-coming-soon">Movies Coming Soon</a>
+                <NavLink to={"/movies-coming-soon"}>Movies Coming Soon</NavLink>
                 </li>
                 <li>
-                  <a href="movie-category">Movies Category</a>
+                <NavLink to={"/movies-category"}>Movies Category</NavLink>
                 </li>
                 <li>
-                  <a href="movie-filter">Movies Filter</a>
+                <NavLink to={"/movies-filter"}>Movies Filter</NavLink>
                 </li>
               </ul>
             </li>
             <li className="menu-item">
-              <a href="" className="arrow-down">
-                Events
-              </a>
+            <NavLink to={"/events"}>Events</NavLink>
+
               <ul className="sub-menu">
                 <li>
-                  <a href="event-list">Event List</a>
+                <NavLink to={"/events"}>Events grid</NavLink>
                 </li>
                 <li>
-                  <a href="event-grid">Event Grid</a>
+                <NavLink to={"/events-list"}>Events list</NavLink>
                 </li>
               </ul>
             </li>
             <li className="menu-item">
-              <a href="pages" className="arrow-down">
-                Pages
-              </a>
+            <NavLink to={"/about"}>Pages</NavLink>
+
               <ul className="sub-menu">
                 <li>
-                  <a href="About">About</a>
+                <NavLink to={"/about"}>About</NavLink>            
+                    </li>
+                <li>
+                <NavLink to={"/faqs"}>Our Faqs</NavLink>            
                 </li>
                 <li>
-                  <a href="Faq">Out Faqs</a>
-                </li>
-                <li>
-                  <a href="404">404</a>
-                </li>
-                <li>
-                  <a href="Account">My Account</a>
+                <NavLink to={"/my-account"}>My Account</NavLink>            
                 </li>
               </ul>
             </li>
             <li className="menu-item">
-              <a href="News">News</a>
+            <NavLink to={"/news"}>News</NavLink>            
             </li>
             <li className="menu-item">
-              <a href="">Contact</a>
-              <ul className="sub-menu"></ul>
+            <NavLink to={"/contact"}>Contact</NavLink>            
             </li>
           </ul>
         </div>

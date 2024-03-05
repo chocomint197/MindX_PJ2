@@ -119,19 +119,19 @@ export default function Footer() {
                     <div className="menu-footer">
                       <ul id="menu-footer-menu-links" className="menu-bigfooter">
                         <li>
-                          <NavLink to={"#"}>About</NavLink>
+                          <NavLink to={"/about"}>About</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"#"}>My account</NavLink>
+                          <NavLink to={"/my-account"}>My account</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"#"}>News</NavLink>
+                          <NavLink to={"/news"}>News</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"#"}>Latest Event</NavLink>
+                          <NavLink to={"/events"}>Latest Event</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"#"}>Contact</NavLink>
+                          <NavLink to={"/contact"}>Contact</NavLink>
                         </li>
                       </ul>
                     </div>

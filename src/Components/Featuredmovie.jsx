@@ -14,10 +14,11 @@ import {
 } from "firebase/firestore";
 import { FirebaseContext } from "../../Firebase/FirebaseProvider";
 import Trailer from "./Trailer.jsx";
+import { NavLink } from "react-router-dom";
 export default function Featuredmovie() {
   const { messCollect } = useContext(FirebaseContext);
   const [featuredMovies, setFeaturedMovies] = useState([]);
-  const [selectedVideoUrl, setSelectedVideoUrl] = useState(''); // for handle trailer link 
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState(""); // for handle trailer link
   const [isOpen, setIsOpen] = useState(false);
 
   // handle trailer popup
@@ -118,7 +119,9 @@ export default function Featuredmovie() {
                                 <div
                                   className="btn-trailer-video"
                                   data-movie-id={movie.id}
-                                  onClick={() => handleOpenPopup(movie.videoTrailer)}
+                                  onClick={() =>
+                                    handleOpenPopup(movie.videoTrailer)
+                                  }
                                 >
                                   <span className="text-trailer">
                                     Watch trailer
@@ -157,11 +160,11 @@ export default function Featuredmovie() {
                 </div>
                 <div className="movie-explore-right">
                   <div className="movie-explore-right-container">
-                    <a href="#">
+                    <NavLink to={"/#"}>
                       <span className="button-content-wrapper">
                         <span className="explore-button-text">Explore Now</span>
                       </span>
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -170,11 +173,10 @@ export default function Featuredmovie() {
         </div>
       </div>
       <Trailer
-      isOpen={isOpen}
-      selectedVideoUrl={selectedVideoUrl}
-      handleClosePopup={handleClosePopup}
-    />
+        isOpen={isOpen}
+        selectedVideoUrl={selectedVideoUrl}
+        handleClosePopup={handleClosePopup}
+      />
     </div>
-    
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Sideintroduce.css";
+import "../styles/Sideintroduce.css"
 import { PiFilmReelBold, PiFilmSlateBold, PiFilmStrip } from "react-icons/pi";
 import { GiFilmProjector } from "react-icons/gi";
 

@@ -8,12 +8,76 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Homepage from './Components/Homepage.jsx'
-
+import Moviesall from './Components/Moviepage/Movies all/Moviesall.jsx'
+import Nowplayingpage from './Components/Moviepage/Movies now playing/Nowplayingpage.jsx'
+import Moviesfilter from './Components/Moviepage/Movies filter/Moviesfilter.jsx'
+import Moviescategory from './Components/Moviepage/Movies category/Moviescategory.jsx'
+import Comingsoonpage from './Components/Moviepage/Movies coming soon page/Comingsoonpage.jsx'
+import Eventgrid from './Components/Eventpage/Event grid/Eventgrid.jsx'
+import Eventlist from './Components/Eventpage/Event list/Eventlist.jsx'
+import About from './Components/Pagessection/About/About.jsx'
+import Faq from './Components/Pagessection/Out faq/Faq.jsx'
+import Error from './Components/Pagessection/404/Error.jsx'
+import Myaccount from './Components/Pagessection/My account/Myaccount.jsx'
+import News from './Components/News section page/News.jsx'
+import Contact from './Components/Contactpage/Contact.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
-    element:<Homepage/>
-  }
+    element: <Homepage />
+  },
+   {
+    path: "/movies-all",
+    element: <Moviesall />
+  },
+  {
+    path: "/movies-now-playing",
+    element: <Nowplayingpage />
+  },
+  {
+    path: "/movies-coming-soon",
+    element: <Comingsoonpage />
+  },
+  {
+    path: "/movies-filter",
+    element: <Moviesfilter />
+  },
+  {
+    path: "/movies-category",
+    element: <Moviescategory />
+  },
+  {
+    path: "/events",
+    element: <Eventgrid />
+  },
+  {
+    path: "/events-list",
+    element: <Eventlist />
+  },
+  {
+    path: "/about",
+    element: <About />
+  },
+  {
+    path: "/faqs",
+    element: <Faq />
+  },
+  {
+    path: "/*",
+    element: <Error />
+  },
+  {
+    path: "/my-account",
+    element: <Myaccount />
+  },
+  {
+    path: "/news",
+    element: <News />
+  },
+  {
+    path: "/contact",
+    element: <Contact />
+  },
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
     <FirebaseProvider>
