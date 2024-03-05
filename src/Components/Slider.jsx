@@ -16,7 +16,7 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(null); 
 
-// set popup cho trailer
+// set popup for trailer
   const handleSelect = (selectedIndex) => {
     setActiveIndex(selectedIndex);
   };
