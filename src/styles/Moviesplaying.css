@@ -328,3 +328,12 @@
 .dots button.dotActive span {
     opacity: 1;
   }
+
+.movie-category-now-playing a {
+    color: #fff;
+
+}
+
+.movie-category-now-playing a:hover {
+    color: #d96c2c;
+}

@@ -105,9 +105,21 @@ export default function Featuredmovie() {
                               <div className="movie-category">
                                 <FaTags className="category-tag" />
 
-                                <a href="#">
-                                  {movie.infoFilm.catagory.join(", ")}
-                                </a>
+                                {movie.infoFilm.catagory.map(
+                                  (category, index) => (
+                                    <React.Fragment key={index}>
+                                      <NavLink
+                                        to={`/movies-category/${category}`}
+                                      >
+                                        {category}
+                                      </NavLink>
+                                      {index !==
+                                        movie.infoFilm.catagory.length - 1 && (
+                                        <span>, </span>
+                                      )}
+                                    </React.Fragment>
+                                  )
+                                )}
                               </div>
                               <span className="running-time-featured">
                                 <FaClock className="time-icon" />

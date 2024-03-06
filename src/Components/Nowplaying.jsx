@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FirebaseContext } from '../../Firebase/FirebaseProvider';
 import { query, limit, getDocs } from 'firebase/firestore';
+import { NavLink } from 'react-router-dom';
 export default function Nowplaying({ activeDot, handleDotClick}) {
   const { messCollect } = useContext(FirebaseContext);
   const [carouselItems, setCarouselItems] = useState([]);
@@ -47,7 +48,13 @@ export default function Nowplaying({ activeDot, handleDotClick}) {
             <div className="now-playing-info">
               <div className="categories-and-time">
                 <div className="movie-category-now-playing">
-                <a>{item.infoFilm.catagory.join(', ')} / </a>
+                {item.infoFilm.catagory.map((category, index) => (
+                      <React.Fragment key={index}>
+                        <NavLink to={`/movies-category/${category}`}>{category}</NavLink>
+                        {index !== item.infoFilm.catagory.length - 1 && <span>, </span>} 
+                      </React.Fragment>
+                    ))}
+                    <span> / </span>
                   <span className="running-time">{item.infoFilm.time}</span>
                 </div>
               </div>

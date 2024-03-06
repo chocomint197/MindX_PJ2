@@ -4,7 +4,7 @@ import { PiFilmReelBold } from "react-icons/pi";
 import "../styles/Comingsoon.css";
 import { query, orderBy, getDocs, limit } from "firebase/firestore";
 import { NavLink } from "react-router-dom";
-import Trailer from "./Trailer"; 
+import Trailer from "./Trailer";
 
 export default function Moviecomingsoon() {
   const { messCollect } = useContext(FirebaseContext);
@@ -12,8 +12,6 @@ export default function Moviecomingsoon() {
   // handle trailer popup
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,8 +31,8 @@ export default function Moviecomingsoon() {
 
     fetchData();
   }, [messCollect]);
-   // handle watch trailer
-   const handleWatchTrailer = (videoUrl) => {
+  // handle watch trailer
+  const handleWatchTrailer = (videoUrl) => {
     setSelectedVideoUrl(videoUrl);
     setIsTrailerOpen(true);
   };
@@ -43,7 +41,6 @@ export default function Moviecomingsoon() {
   const handleCloseTrailer = () => {
     setIsTrailerOpen(false);
   };
-
 
   return (
     <div className="coming-soon-section">
@@ -78,7 +75,22 @@ export default function Moviecomingsoon() {
                           <div className="now-playing-info">
                             <div className="categories-and-time">
                               <div className="movie-category-now-playing">
-                                <a>{item.infoFilm.catagory.join(", ")} / </a>
+                                {item.infoFilm.catagory.map(
+                                  (category, index) => (
+                                    <React.Fragment key={index}>
+                                      <NavLink
+                                        to={`/movies-category/${category}`}
+                                      >
+                                        {category}
+                                      </NavLink>
+                                      {index !==
+                                        item.infoFilm.catagory.length - 1 && (
+                                        <span>, </span>
+                                      )}
+                                    </React.Fragment>
+                                  )
+                                )}
+                                <span> / </span>
                                 <span className="running-time">
                                   {item.infoFilm.time}
                                 </span>
@@ -89,7 +101,14 @@ export default function Moviecomingsoon() {
                                 {item.nameFilm}
                               </h3>
                             </a>
-                            <button className="booking watch-trailer-btn " onClick={() => handleWatchTrailer(item.videoTrailer)}>Watch trailer</button>
+                            <button
+                              className="booking watch-trailer-btn "
+                              onClick={() =>
+                                handleWatchTrailer(item.videoTrailer)
+                              }
+                            >
+                              Watch trailer
+                            </button>
                           </div>
                         </div>
                       ))}
@@ -101,8 +120,12 @@ export default function Moviecomingsoon() {
           </div>
         </div>
       </div>
-       {/* Trailer popup */}
-       <Trailer isOpen={isTrailerOpen} selectedVideoUrl={selectedVideoUrl} handleClosePopup={handleCloseTrailer} />
+      {/* Trailer popup */}
+      <Trailer
+        isOpen={isTrailerOpen}
+        selectedVideoUrl={selectedVideoUrl}
+        handleClosePopup={handleCloseTrailer}
+      />
     </div>
   );
 }

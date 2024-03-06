@@ -10,7 +10,6 @@ import {
 import Homepage from './Components/Homepage.jsx'
 import Moviesall from './Components/Moviepage/Movies all/Moviesall.jsx'
 import Nowplayingpage from './Components/Moviepage/Movies now playing/Nowplayingpage.jsx'
-import Moviesfilter from './Components/Moviepage/Movies filter/Moviesfilter.jsx'
 import Moviescategory from './Components/Moviepage/Movies category/Moviescategory.jsx'
 import Comingsoonpage from './Components/Moviepage/Movies coming soon page/Comingsoonpage.jsx'
 import Eventgrid from './Components/Eventpage/Event grid/Eventgrid.jsx'
@@ -39,11 +38,7 @@ const router= createBrowserRouter([
     element: <Comingsoonpage />
   },
   {
-    path: "/movies-filter",
-    element: <Moviesfilter />
-  },
-  {
-    path: "/movies-category",
+    path: "/movies-category/:category",
     element: <Moviescategory />
   },
   {

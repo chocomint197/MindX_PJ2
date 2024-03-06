@@ -75,12 +75,6 @@ export default function Navbar() {
                 <li>
                 <NavLink to={"/movies-coming-soon"}>Movies Coming Soon</NavLink>
                 </li>
-                <li>
-                <NavLink to={"/movies-category"}>Movies Category</NavLink>
-                </li>
-                <li>
-                <NavLink to={"/movies-filter"}>Movies Filter</NavLink>
-                </li>
               </ul>
             </li>
             <li className="menu-item">
