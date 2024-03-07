@@ -24,8 +24,12 @@ export const FirebaseContext = createContext();
 const FirebaseProvider = ({ children }) => {
   const db = getFirestore(app);
   const messCollect = collection(db, "product"); // Specify the collection path here
+  const eventCollection = collection(db, "events");
+  const blogCollection = collection(db, "Blogs");
+
+
   return (
-    <FirebaseContext.Provider value={{ app, messCollect }}>
+    <FirebaseContext.Provider value={{ app, messCollect, eventCollection, blogCollection }}>
       {children}
     </FirebaseContext.Provider>
   );

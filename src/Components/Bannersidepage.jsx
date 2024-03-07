@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/Bannersidepage.css";
 import { IoIosArrowForward } from "react-icons/io";
-import { NavLink, useLocation } from "react-router-dom";
-
+import { NavLink, useLocation, useParams } from "react-router-dom";
+import { FirebaseContext } from "../../Firebase/FirebaseProvider";
+import { doc } from "firebase/firestore";
 export default function Bannersidepage({}) {
-  const location = useLocation(); // dung useLocation cua react router de lay URL cua page va render tuong ung
-  const pageName = location.pathname.replace(/-/g, " "); // vi pathing trong router co dau - nen dung replace de bo dau - khi render
-  const pageTitle = getPageTitle(pageName);
-  function getPageTitle(pageName) {
-    // split thành array. ví dụ /movies/actions sẽ thành ["movies", "actions"] và filter để bỏ các index rỗng
-    const pathParts = pageName.split("/").filter(Boolean); 
-    const lastPart = pathParts[pathParts.length - 1]; // chỉ lấy index cuối cùng của array
-    // chuyển chữ cái thành chữ hoa vì pathing là /movies-all
-    const formattedTitle = decodeURIComponent(lastPart.replace(/-/g, " "));
 
-    return formattedTitle;
-  }
+
+  const location = useLocation();
+  const [pageTitle, setPageTitle] = useState(""); 
+
+  useEffect(() => {
+   
+    const fetchPageTitle = () => {
+      const pageName = location.pathname.split("/").filter(Boolean).pop();
+      const formattedTitle = decodeURIComponent(pageName.replace(/-/g, " "));
+      setPageTitle(formattedTitle);
+    };
+
+    fetchPageTitle();
+  }, [location.pathname]); 
+
+
+
+  
 
   return (
     <section className="bannersidepage">

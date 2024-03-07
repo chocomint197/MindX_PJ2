@@ -1,6 +1,8 @@
 .logo-slider {
   margin-top: 0px;
   margin-bottom: 60px;
+  width: 1250px;
+  margin: auto;
 }
 
 .logo-slider-container {
@@ -39,7 +41,7 @@
   margin: 0 0 70px 0;
 }
 
-.customNav::before {
+.logo-images-slider .customNav::before {
   left: 0;
   position: absolute;
   top: 50%;
@@ -50,7 +52,7 @@
   transform: translateY(-50%);
 }
 
-.customNav::after {
+.logo-images-slider .customNav::after {
   right: 0;
   position: absolute;
   top: 50%;
@@ -170,9 +172,3 @@
     overflow: hidden; 
   }
 
-/* css for slick slide */
-.logo-slider-wrap {
-
-    width: 1250px !important ;
-    margin: auto !important;
-}

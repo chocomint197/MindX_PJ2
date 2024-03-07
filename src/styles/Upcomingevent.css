@@ -222,11 +222,8 @@
     box-sizing: border-box;
 }
 
-.event-thumbnail {
-    overflow:hidden;
-    position: relative;
-    margin-top: auto;
-    box-sizing: border-box;
+.event-desc .event-thumbnail::before {
+    display:none;
 }
 
 .event-thumbnail .date-event {
@@ -301,7 +298,7 @@
     color: #d96c2c;
     font-weight: 900;
 }
-.event-title {
+.event-post .event-title {
     margin: 15px 0px;
     font-size: 20px;
     line-height: 1.2;
@@ -310,7 +307,7 @@
     font-weight: bold;
     clear: both;
 }
-.event-title a {
+.event-post .event-title a {
     color:#000;
     text-decoration: none;
     box-shadow: none;

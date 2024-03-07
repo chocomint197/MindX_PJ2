@@ -85,6 +85,7 @@ export default function Moviescategory() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

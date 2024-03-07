@@ -54,7 +54,6 @@
 
 .sale-banner-text {
   max-width: 100%;
-  margin-block-end: 20px;
 
 }
 
@@ -64,10 +63,11 @@
   font-weight: 700;
   line-height: 1.2em;
   width: auto;
-  margin-block-end: 20px;
+  margin-bottom: 0;
 }
 
 .sale-banner-text p {
+  margin-bottom: 0;
   transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,transform var(--e-transform-transition-duration,.4s);
 }
 
@@ -500,3 +500,79 @@ label a {
   background-color: #fff;
   color: #000;
 }
+
+/* logo slider */ 
+.logo-slider {
+  margin-top: 0px;
+  margin-bottom: 60px;
+  width: 1250px;
+  margin: auto;
+}
+
+
+
+  .customNav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 70px 0;
+  }
+  
+  .customNav::before {
+    left: 0;
+    position: absolute;
+    top: 50%;
+    content: "";
+    width: calc(50% - 55px);
+    height: 1px;
+    background-color: #e0e0e0;
+    transform: translateY(-50%);
+  }
+  
+  .customNav::after {
+    right: 0;
+    position: absolute;
+    top: 50%;
+    content: "";
+    width: calc(50% - 55px);
+    height: 1px;
+    background-color: #e0e0e0;
+    transform: translateY(-50%);
+  }
+
+  .customNav a {
+    width: 28px;
+    height: 28px;
+    border-radius: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px 0 0;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .customNav a svg {
+    color: #737373;
+    display:inline-flex;
+    font-size: 9px;
+    -webkit-transition: all 0.3s linear;
+
+  }
+
+  .customNav .prev {
+    background: #f3f3f3;
+  }
+
+  .customNav  .next {
+    background-color: #d96c2c;
+  }
+
+  .customNav .next svg {
+    color : #fff;
+  }
+
+  .customNav a:hover {
+    background-color: #000;
+  }

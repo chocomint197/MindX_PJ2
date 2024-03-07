@@ -7,6 +7,7 @@ import { FirebaseContext } from "../../../../Firebase/FirebaseProvider";
 import Trailer from "../../Trailer";
 import { getDocs, query } from "firebase/firestore";
 import { NavLink } from "react-router-dom";
+import Footer from "../../Footer";
 
 export default function Comingsoonpage() {
   const { messCollect } = useContext(FirebaseContext);
@@ -107,6 +108,7 @@ export default function Comingsoonpage() {
         selectedVideoUrl={selectedVideoUrl}
         handleClosePopup={handleCloseTrailer}
       />
+      <Footer/>
     </div>
   );
 }

@@ -118,3 +118,8 @@ h1 {
 .breadcrumbs .nav-home a:hover {
     color: #d96c2c;
 }
+
+.header_title {
+    text-transform: capitalize;
+    font-weight: bold;
+}

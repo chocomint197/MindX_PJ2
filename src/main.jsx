@@ -20,6 +20,7 @@ import Error from './Components/Pagessection/404/Error.jsx'
 import Myaccount from './Components/Pagessection/My account/Myaccount.jsx'
 import News from './Components/News section page/News.jsx'
 import Contact from './Components/Contactpage/Contact.jsx'
+import Eventdetail from './Components/Eventpage/Event detail/Eventdetail.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -73,6 +74,10 @@ const router= createBrowserRouter([
     path: "/contact",
     element: <Contact />
   },
+  {
+    path: "/events/:eventId",
+    element: <Eventdetail/>
+  }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
     <FirebaseProvider>

@@ -7,6 +7,8 @@ import { FirebaseContext } from "../../../../Firebase/FirebaseProvider";
 import "../../../styles/Moviesplaying.css";
 import "../Movies now playing/Nowplayingpage.css";
 import { NavLink } from "react-router-dom";
+import Footer from "../../Footer";
+
 export default function Nowplayingpage() {
   const { messCollect } = useContext(FirebaseContext);
 
@@ -82,6 +84,7 @@ export default function Nowplayingpage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
