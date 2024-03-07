@@ -73,7 +73,7 @@ export default function Eventlist() {
                           </div>
                           </div>
                           <h3 className="title">  
-                          <NavLink to={`/events/${event.title}`}>{event.id}</NavLink>
+                          <NavLink to={`/events/${event.id}`}>{event.title}</NavLink>
                           </h3>
                           </div>
                         </div>
