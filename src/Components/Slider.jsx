@@ -140,7 +140,7 @@ function Slider() {
       <Carousel controls={false} indicators={false} interval={5000}>
         {carouselItems.map((item) => (
           <Carousel.Item className="big-slider" key={item.id}>
-            <img src={item.img} alt={item.nameFilm} />
+            <img src={item.subImg[0]} alt={item.nameFilm} />
             <div className="big-slider-overlay">
               <div className="movie-sharing">
                 <span className="text-share">Share</span>

@@ -94,7 +94,7 @@ export default function Featuredmovie() {
                         <div className="featured-content-item-container">
                           <a href="#">
                             <div className="featured-movie-img">
-                              <img src={movie.img} alt={movie.nameFilm} />
+                              <img src={movie.subImg[2]} alt={movie.nameFilm} />
                             </div>
                           </a>
                           <div className="featured-movie-info">
