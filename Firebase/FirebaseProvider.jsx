@@ -26,10 +26,11 @@ const FirebaseProvider = ({ children }) => {
   const messCollect = collection(db, "product"); // Specify the collection path here
   const eventCollection = collection(db, "events");
   const blogCollection = collection(db, "Blogs");
-
+  const faqCollection = collection(db, "faq");
+  const chairCollection = collection(db, "dataChair")
 
   return (
-    <FirebaseContext.Provider value={{ app, messCollect, eventCollection, blogCollection }}>
+    <FirebaseContext.Provider value={{ app, messCollect, eventCollection, blogCollection, faqCollection, chairCollection }}>
       {children}
     </FirebaseContext.Provider>
   );
