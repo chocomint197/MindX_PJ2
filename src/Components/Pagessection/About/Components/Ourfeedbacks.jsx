@@ -25,8 +25,8 @@ export default function Ourfeedbacks() {
                 <PiFilmReelBold />
               </div>
               <div className="top-heading">
-                <h3 className="sub-title">Our Feedbacks</h3>
-                <h2 className="title">What They’re Talking About us?</h2>
+                <h3 className="sub-title">Phản hồi</h3>
+                <h2 className="title">Khách hàng nói gì về chúng tôi ?</h2>
               </div>
             </div>
             <div className="fb-about-left-body">
@@ -56,7 +56,7 @@ export default function Ourfeedbacks() {
 
                                 </div>
                                 <h3 className="name">Hubert J. Jonso</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           
                         </div>
@@ -91,7 +91,7 @@ export default function Ourfeedbacks() {
 
                                 </div>
                                 <h3 className="name">Mike Hardson</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           
                         </div>
@@ -126,7 +126,7 @@ export default function Ourfeedbacks() {
 
                                 </div>
                                 <h3 className="name">Pacific D. Lee</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           
                         </div>

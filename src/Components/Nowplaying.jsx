@@ -59,7 +59,7 @@ export default function Nowplaying({ activeDot, handleDotClick}) {
                 </div>
               </div>
               <a href="#"><h3 className="movie-now-title">{item.nameFilm}</h3></a>
-              <button className="booking">Get Ticket</button>
+              <button className="booking">Đặt vé</button>
             </div>
           </div>
       ))}

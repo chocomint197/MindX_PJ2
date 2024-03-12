@@ -76,7 +76,7 @@ export default function Eventgrid() {
                                       </span>
                                     </span>
                                   </div>
-                                  <label>Timing</label>
+                                  <label>Thời gian</label>
                                 </div>
                                 <div className="wrapper location">
                                   <div className="venue">
@@ -84,7 +84,7 @@ export default function Eventgrid() {
 
                                     <span>{event.location}</span>
                                   </div>
-                                  <label>Location</label>
+                                  <label>Địa điểm</label>
                                 </div>
                               </div>
                               <NavLink

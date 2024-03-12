@@ -21,6 +21,7 @@ import Myaccount from './Components/Pagessection/My account/Myaccount.jsx'
 import News from './Components/News section page/News.jsx'
 import Contact from './Components/Contactpage/Contact.jsx'
 import Eventdetail from './Components/Eventpage/Event detail/Eventdetail.jsx'
+import Searchpage from './Components/Searchpage/Searchpage.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -77,6 +78,10 @@ const router= createBrowserRouter([
   {
     path: "/events/:eventId",
     element: <Eventdetail/>
+  },
+  {
+    path: "/search/:searchTerm",
+    element: <Searchpage/>
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(

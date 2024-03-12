@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Slider from "./Slider";
 import Moviesplaying from "./Moviesplaying";
 import Featuredmovie from "./Featuredmovie";
 import Bigbanner from "./Bigbanner";
@@ -13,13 +12,16 @@ import Directlyblog from "./Directlyblog";
 import { PiFilmReelBold } from "react-icons/pi";
 import SideIntroduce from "./SideIntroduce";
 import Footer from "./Footer";
+import Headerslide from "./Headerslide";
 
 export default function Homepage() {
+  const [inputSearchTerm, setInputSearchTerm] = useState(""); 
+console.log(inputSearchTerm)
   return (
     <div className="home">
       <div className="header">
-        <Navbar></Navbar>
-        <Slider></Slider>
+      <Navbar onSearch={(value) => setInputSearchTerm(value)} /> 
+        <Headerslide></Headerslide>
         <img
           src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/02/image-lines-header.jpg"
           alt=""
@@ -41,12 +43,12 @@ export default function Homepage() {
               <div className="sale-banner-wrap">
                 <div className="sale-banner-overlay"></div>
                 <div className="sale-banner-text">
-                  <p>40% Discount for Students</p>
+                  <p>Giảm giá 40% cho học sinh, sinh viên</p>
                 </div>
                 <div className="sale-banner-btn">
                   <div className="sale-banner-btn-container">
                     <div className="sale-banner-btn-wrapper">
-                      <button className="sale">Book Your Ticket</button>
+                      <button className="sale">Đặt vé ngay</button>
                     </div>
                   </div>
                 </div>
@@ -65,9 +67,9 @@ export default function Homepage() {
                     <PiFilmReelBold className="direclty-icon" />
                   </div>
                   <div className="top-heading">
-                    <h3 className="sub-title">Directly Blog Posts</h3>
+                    <h3 className="sub-title">Các bài blogs</h3>
                     <h2 className="title">
-                      Latest New & Articles from the Posts
+                    Tin tức mới nhất và bài viết
                     </h2>
                   </div>
                 </div>

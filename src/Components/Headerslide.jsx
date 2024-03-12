@@ -1,7 +1,6 @@
-import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Slider.css";
-import "../styles/Trailerpopup.css"
+import "../styles/Trailerpopup.css";
 import { FirebaseContext } from "../../Firebase/FirebaseProvider";
 import React, { useState, useEffect, useContext } from "react";
 import { query, limit, getDocs } from "firebase/firestore";
@@ -9,21 +8,37 @@ import { FaTwitter, FaFacebookF, FaPinterestP } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa6";
 import ReactPlayer from "react-player";
 import { ImCancelCircle } from "react-icons/im";
+import Slider from "react-slick";
 
-function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
-  const [selectedVideoIndex, setSelectedVideoIndex] = useState(null); 
+function ThumbnailSlider({
+    slideItems,
+    videoTrailers,
+    showPopup,
+    setShowPopup,
+    currentSlide,
+    slideCount,
+    setSlideCount
 
-// set popup for trailer
-  const handleSelect = (selectedIndex) => {
-    setActiveIndex(selectedIndex);
+}) {
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: false,
+    speed: 1000,
+    slidesToShow: 2,
+    slidesToScroll: 3,
+    autoplay: true,
+    autoplaySpeed: 2100,
   };
 
-  const handlePlayButtonClick = (videoUrl, index) => {
+  useEffect(() => {
+    setSlideCount(slideItems.length);
+  }, [slideItems, setSlideCount]);
+
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(null);
+
+  const handlePlayButtonClick = (index) => {
     setSelectedVideoIndex(index);
-    setSelectedVideoUrl(videoUrl);
     setShowPopup(true);
   };
 
@@ -34,17 +49,6 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
     display: showPopup ? 'flex' : 'none'
   };
 
-// set interval
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setActiveIndex((prevIndex) =>
-        prevIndex === imageTrailers.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [imageTrailers.length]);
-
   return (
     <div className="trailer-slider-wrapper">
       <img
@@ -53,56 +57,44 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
         className="arrow-trailer"
       />
       <span className="text-trailer">Trailers</span>
-      <div className="custom-carousel-dots-container">
-        {imageTrailers.map((_, index) => (
-          <div
-            key={index}
-            className={`custom-carousel-dot ${
-              index === activeIndex ? "active" : ""
-            }`}
-            onClick={() => handleSelect(index)}
-          ></div>
-        ))}
-      </div>
-      <Carousel controls={false} indicators={false} interval={null}>
-        {imageTrailers.map((trailer, index) => (
-          <Carousel.Item key={index} className="trailer-draggable">
-            <div className="drag-track">
-              <div className="slick-slide">
-                <div className="movie-trailer-item">
-                  <div className="movie-trailer-media">
-                    <img src={trailer} alt={`Trailer ${index + 1}`} />
-                    <div className="has-trailer">
-                      <div
-                        className="trailer-video"
-                        onClick={() => handlePlayButtonClick(videoTrailers[index], index)}
-                        
-                      >
-                        <FaPlay className="trailer-play" />
-                      </div>
+
+      <Slider {...settings}>
+        {slideItems.map((item, index) => (
+          <div className="drag-track" key={item.id}>
+            <div className="slick-slide">
+              <div className="movie-trailer-item">
+                <div className={`movie-trailer-media ${currentSlide === index ? 'movie-trailer-media-active' : ''}`}>
+                  <img src={item.subImg[0]} alt={item.nameFilm} />
+                  <div className="has-trailer">
+                    <div
+                      className="trailer-video"
+                      onClick={() => handlePlayButtonClick(index)}
+                    >
+                      <FaPlay className="trailer-play" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </Carousel.Item>
+          </div>
         ))}
-      </Carousel>
+      </Slider>
 
-      {/* Popup trailer */}
       {showPopup && (
-    <div className="trailer-popup" style={popupStyle}>
-    <div className="trailer-popup-container fullscreen">
+        <div className="trailer-popup" style={popupStyle}>
+          <div className="trailer-popup-container fullscreen">
             <div className="trailer-popup-content">
-            <ImCancelCircle className="close-button" onClick={handleClosePopup}/>
-                
+              <ImCancelCircle
+                className="close-button"
+                onClick={handleClosePopup}
+              />
               <div className="trailer-here">
-              <ReactPlayer
-              url={selectedVideoUrl}
-              width="100%"
-              height="100%"
-              controls={false}
-            />
+                <ReactPlayer
+                  url={videoTrailers[selectedVideoIndex]}
+                  width="100%"
+                  height="100%"
+                  controls={false}
+                />
               </div>
             </div>
           </div>
@@ -112,10 +104,16 @@ function ThumbnailSlider({ imageTrailers, videoTrailers, onPlayButtonClick }) {
   );
 }
 
-function Slider() {
+function Headerslide() {
   const { app, messCollect } = useContext(FirebaseContext);
-  const [carouselItems, setCarouselItems] = useState([]);
+  const [slideItems, setSlideItems] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [slideCount, setSlideCount] = useState(0);
+
+  const handleSlideChange = (current) => {
+    setCurrentSlide(current);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -126,7 +124,7 @@ function Slider() {
           id: doc.id,
           ...doc.data(),
         }));
-        setCarouselItems(data);
+        setSlideItems(data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -137,9 +135,19 @@ function Slider() {
 
   return (
     <div className="main-slider">
-      <Carousel controls={false} indicators={false} interval={5000}>
-        {carouselItems.map((item) => (
-          <Carousel.Item className="big-slider" key={item.id}>
+      <Slider
+        dots={false}
+        arrows={false}
+        infinite={true}
+        speed={1000}
+        slidesToShow={1}
+        slidesToScroll={1}
+        autoplay={true}
+        autoplaySpeed={2000}
+        afterChange={handleSlideChange}
+      >
+        {slideItems.map((item) => (
+          <div className="big-slider" key={item.id}>
             <img src={item.subImg[0]} alt={item.nameFilm} />
             <div className="big-slider-overlay">
               <div className="movie-sharing">
@@ -173,32 +181,36 @@ function Slider() {
                   </a>
                 </div>
                 <p className="big-slider-excerpt">
-                  Writen and Directed by {item.infoFilm.director}
+                  Biên kịch và đạo diễn bởi {item.infoFilm.director}
                 </p>
                 <div className="big-slider-button">
                   <a>
-                    <button className="more-info">More info</button>
+                    <button className="more-info">Chi tiết</button>
                   </a>
-                  <button className="button-booking">Get ticket</button>
+                  <button className="button-booking">Đặt vé ngay</button>
                 </div>
               </div>
 
               <div className="big-slider-release">
-                <span className="text">In theater</span>
+                <span className="text">Công chiếu </span>
                 <h3 className="time">{item.infoFilm.releaseDate}</h3>
               </div>
             </div>
-          </Carousel.Item>
+          </div>
         ))}
-      </Carousel>
+      </Slider>
       <ThumbnailSlider
-        imageTrailers={carouselItems.map((item) => item.img)}
-        videoTrailers={carouselItems.map((item) => item.videoTrailer)}
-        // onPlayButtonClick={(videoUrl) => setShowPopup(true)}
+        videoTrailers={slideItems.map((item) => item.videoTrailer)}
+        slideItems={slideItems}
+        showPopup={showPopup}
         setShowPopup={setShowPopup}
+        currentSlide={currentSlide}
+        slideCount={slideCount}
+        setSlideCount={setSlideCount}
       />
     </div>
   );
 }
 
-export default Slider;
+export default Headerslide;
+

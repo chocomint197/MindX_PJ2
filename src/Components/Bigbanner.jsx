@@ -23,8 +23,8 @@ export default function Bigbanner() {
                   <PiFilmReelBold className="bigbanner-filmicon" />
                 </div>
                 <div className="bigbanner-top-heading">
-                  <h3 className="bigbanner-subtitle">Documentary</h3>
-                  <p className="bigbanner-title">Life Under an Umbrella</p>
+                  <h3 className="bigbanner-subtitle">Phim tài liệu</h3>
+                  <p className="bigbanner-title">Cuộc sống khi nhìn qua một chiếc dù</p>
                 </div>
                 <p className="description">
                   Phasellus non cursus ligula, sed mattis urna. Aenean ac tor
@@ -53,7 +53,7 @@ export default function Bigbanner() {
                     <div className="bigbanner-left-button-wrapper">
               <a href="" className="moreinfo-button">
                 <span className="moreinfo-button-wrapper">
-                  <span className="moreinfo-button-text">More info</span>
+                  <span className="moreinfo-button-text">Chi tiết</span>
                 </span>
               </a>
             </div>
@@ -66,7 +66,7 @@ export default function Bigbanner() {
             <div className="bigbanner-right-context">
               <div className="bigbanner-right-container">
                 <div className="video-text">
-                  <div className="text">Watch the trailer</div>
+                  <div className="text">Xem trailer</div>
                   <div className="icon-content-view" onClick={handleOpenPopup}>
                     <div className="content-video-btn">
                       <FaPlay className="content-video-icon" />

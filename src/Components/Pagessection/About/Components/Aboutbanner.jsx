@@ -11,13 +11,13 @@ export default function Aboutbanner() {
                     <div className="about-banner-top">
                     <div className="about-banner-top_container">
                         <div className="about-banner-top_header">
-                            <h2 className="title">Watch Live Interview with<span> Movie</span> Producer
+                            <h2 className="title">Xem phỏng vấn trực tiếp với<span> producers</span> 
                              </h2>
                         </div>
                     </div>
                     </div>
                     <div className="about-banner-bottom">
-                    <button>Discover more</button>
+                    <button>Khám phá thêm</button>
                     </div>
                 </div>
             </div>

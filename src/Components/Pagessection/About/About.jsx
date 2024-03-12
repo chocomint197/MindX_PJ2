@@ -37,12 +37,12 @@ export default function About() {
               <div className="sale-banner-wrap">
                 <div className="sale-banner-overlay"></div>
                 <div className="sale-banner-text">
-                  <p>40% Discount for Students</p>
+                  <p>Giảm giá 40% cho học sinh, sinh viên</p>
                 </div>
                 <div className="sale-banner-btn">
                   <div className="sale-banner-btn-container">
                     <div className="sale-banner-btn-wrapper">
-                      <button className="sale">Book Your Ticket</button>
+                      <button className="sale">Đặt vé ngay</button>
                     </div>
                   </div>
                 </div>

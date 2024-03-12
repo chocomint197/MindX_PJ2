@@ -54,7 +54,7 @@ export default function Awards({  }) {
                             <CountUp start={0} end={23} duration={2} />
                           )}
                             </span>
-                            <p className="content">Awards Won</p>
+                            <p className="content">Giải thưởng</p>
                           </div>
                         </div>
                       </div>
@@ -71,7 +71,7 @@ export default function Awards({  }) {
                             <CountUp start={0} end={870} duration={2} />
                           )}
                             </span>
-                            <p className="content">Films Produce</p>
+                            <p className="content">Tổng phim </p>
                           </div>
                         </div>
                       </div>
@@ -88,7 +88,7 @@ export default function Awards({  }) {
                             <CountUp start={0} end={30} duration={2} />
                           )}
                             </span>
-                            <p className="content">Pro Directors</p>
+                            <p className="content">Đạo diễn</p>
                           </div>
                         </div>
                       </div>
@@ -105,7 +105,7 @@ export default function Awards({  }) {
                             <CountUp start={0} end={980} duration={2} />
                           )}
                             </span>
-                            <p className="content">Tickets Sold</p>
+                            <p className="content">Số vé bán</p>
                           </div>
                         </div>
                       </div>

@@ -54,8 +54,8 @@ export default function Moviecomingsoon() {
                     <PiFilmReelBold className="icon-film" />
                   </div>
                   <div className="top-heading">
-                    <h3 className="sub-title">New upcoming movies</h3>
-                    <h2 className="title">Movies Coming soon</h2>
+                    <h3 className="sub-title">Phim sắp ra mắt</h3>
+                    <h2 className="title">Phim sắp được chiếu</h2>
                   </div>
                 </div>
               </div>

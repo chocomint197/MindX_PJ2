@@ -26,8 +26,8 @@ export default function Ourfeedback() {
                   <PiFilmReelBold className="fb-icon-film" />
                 </div>
                 <div className="ourfb-top-heading">
-                  <h3 className="sub-title">Our Feedbacks</h3>
-                  <h2 className="title">What They're Talking About us?</h2>
+                  <h3 className="sub-title">Đánh giá</h3>
+                  <h2 className="title">Khách hàng nói gì về chúng tôi ?</h2>
                 </div>
                 <p className="description">
                   Proin a lacus arcu. Nullam id dui eu orci maximus. Cras at
@@ -43,7 +43,7 @@ export default function Ourfeedback() {
                       </span>
                     </span>
                   </NavLink> */}
-                  <button clasName="fb-left-button-content">View All Feedbacks</button>
+                  <button className="fb-left-button-content">Xem tất cả đánh giá</button>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Ourfeedback() {
                             </div>
                             <div className="wrap-info">
                                 <h3 className="name">Hubert J. Jonso</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           </div>
                           <div className="quote">
@@ -104,7 +104,7 @@ export default function Ourfeedback() {
                             </div>
                             <div className="wrap-info">
                                 <h3 className="name">Mike Hardson</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           </div>
                           <div className="quote">
@@ -136,7 +136,7 @@ export default function Ourfeedback() {
                             </div>
                             <div className="wrap-info">
                                 <h3 className="name">Pacific D. Lee</h3>
-                                <p className="job">Customer</p>
+                                <p className="job">Khách hàng</p>
                             </div>
                           </div>
                           <div className="quote">

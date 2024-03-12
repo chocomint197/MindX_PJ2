@@ -29,8 +29,8 @@ export default function Moviesplaying() {
             }}
           ></div>
           <div className="text-content">
-            <p className="subtitle">Join Now</p>
-            <h3 className="title">Upcoming Film Festivals</h3>
+            <p className="subtitle">Tham gia ngay</p>
+            <h3 className="title">Sự kiện phim sắp diễn ra</h3>
             
           </div>
           <span className="featured-icon">
@@ -48,8 +48,8 @@ export default function Moviesplaying() {
             }}
           ></div>
           <div className="text-content">
-            <p className="subtitle">Watch Now</p>
-            <h3 className="title">Watch Film Awards</h3>
+            <p className="subtitle">Xem ngay</p>
+            <h3 className="title">Xem lễ trao giải phim</h3>
            
           </div>
           <span className="featured-icon">
@@ -67,8 +67,8 @@ export default function Moviesplaying() {
             }}
           ></div>
           <div className="text-content">
-            <p className="subtitle">Get Ticket</p>
-            <h3 className="title">Comedy TV Shows</h3>
+            <p className="subtitle">Đặt vé</p>
+            <h3 className="title">Xem chương trình hài</h3>
             
           </div>
           <span className="featured-icon">
@@ -85,8 +85,8 @@ export default function Moviesplaying() {
                     <PiFilmReel className="flaticon film-roll"/>
                     </div>
                     <div className="top-heading">
-                        <h3 className="subtitle">Watch New Movies</h3>
-                        <h2 className="title">Movies Now Playing</h2>
+                        <h3 className="subtitle">Xem phim mới</h3>
+                        <h2 className="title">Các phim mới ra</h2>
                     </div>
                 </div>
                 <div className="movies-playing-show">

@@ -15,7 +15,7 @@ export default function SideIntroduce() {
                   <div className="side-introduce-box-bg"></div>
                   <div className="side-introduce-overlay"></div>
                   <div className="side-introduce-box-content">
-                    <h3 className="title">Top 6 Movies in Theaters</h3>
+                    <h3 className="title">Top 6 bộ phim trong rạp</h3>
                   </div>
                   <span className="box-icon">
                     <PiFilmSlateBold />
@@ -42,7 +42,7 @@ export default function SideIntroduce() {
                     style={{ backgroundColor: "#d96c2c" }}
                   ></div>
                   <div className="side-introduce-box-content">
-                    <h3 className="title">Watch Coming Soon Movies</h3>
+                    <h3 className="title">Phim sắp ra mắt</h3>
                   </div>
                   <span className="box-icon">
                   <PiFilmStrip />
@@ -66,7 +66,7 @@ export default function SideIntroduce() {
                   ></div>
                   <div className="side-introduce-overlay"></div>
                   <div className="side-introduce-box-content">
-                    <h3 className="title">Hot Movies Trailers Live Now</h3>
+                    <h3 className="title">Xem ngay trailer của các phim hot</h3>
                   </div>
                   <span className="box-icon">
                   <GiFilmProjector />

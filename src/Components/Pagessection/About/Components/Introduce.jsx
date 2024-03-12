@@ -37,7 +37,7 @@ export default function Introduce() {
                                   end={20}
                                   duration={2}
                                 /></span>
-                  <p>Years of Producing</p>
+                  <p>năm kinh nghiệm</p>
                 </div>
               </div>
             </div>
@@ -54,8 +54,8 @@ export default function Introduce() {
                   <PiFilmReelBold />
                 </div>
                 <div className="introduce-right-top_heading">
-                  <h3 className="sub-title">Get To Know</h3>
-                  <h2 className="title">Proving the Best Film Services</h2>
+                  <h3 className="sub-title">Tìm hiểu thêm</h3>
+                  <h2 className="title">Cung cấp dịch vụ làm phim chuyên nghiệp nhất</h2>
                 </div>
                 <p className="description">
                   Lorem ipsum dolor sit amet consectur adipiscing elit sed
@@ -75,17 +75,17 @@ export default function Introduce() {
                   </div>
                   <div className="introduce-right-text">
                     <h3 className="right-text_title">
-                      <span>6 Years of Innovation </span>
+                      <span>6 năm cho sự đổi mới </span>
                     </h3>
                     <p className="right-text_desc">
-                      We're here for look even you from start to finish.{" "}
+                      Chúng tôi luôn luôn ở bên cạnh bạn từ bắt đầu đến kết thúc.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="introduce-right-button">
-              <button>Discover More</button>
+              <button>Khám phá thêm</button>
             </div>
 
           </div>

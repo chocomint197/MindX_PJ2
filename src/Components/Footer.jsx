@@ -30,8 +30,8 @@ export default function Footer() {
                 <div className="minifooter-right-container">
                   <div className="minifooter-right-first">
                     <div className="minifooter-right-first-content">
-                      <NavLink to={"#"}>Help / </NavLink>
-                      <NavLink to={"#"}>Privacy Policy</NavLink>
+                      <NavLink to={"faqs"}>Cần giúp đỡ ? / </NavLink>
+                      <NavLink to={"#"}>Chính sách bảo mật</NavLink>
                     </div>
                   </div>
                   <div className="minifooter-right-second">
@@ -69,11 +69,11 @@ export default function Footer() {
               <div className="bigfooter-col">
                 <div className="bigfooter-wrap">
                   <div className="bigfooter1-headtext">
-                    <p>Buy movie tickets easily with Aovis system nationwide</p>
+                    <p>Mua vé phim bạn thích dễ dàng với hệ thống của chúng tôi</p>
                   </div>
                   <div className="bigfooter1-btn">
                     <div className="bigfooter1-btn-container">
-                      <button>Get Your Ticket</button>
+                      <button>Đặt vé ngay</button>
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export default function Footer() {
                 <div className="bigfooter-wrap">
                   <div className="bigfooter-25-headtext">
                     <div className="top-heading has-square-corner">
-                      <h2 className="title">Movies</h2>
+                      <h2 className="title">Thể loại</h2>
                     </div>
                   </div>
                   <div className="bigfooter-25-body">
@@ -112,26 +112,26 @@ export default function Footer() {
                 <div className="bigfooter-wrap">
                   <div className="bigfooter-25-headtext">
                     <div className="top-heading has-square-corner">
-                      <h2 className="title">Links</h2>
+                      <h2 className="title">Các trang khác</h2>
                     </div>
                   </div>
                   <div className="bigfooter-25-body">
                     <div className="menu-footer">
                       <ul id="menu-footer-menu-links" className="menu-bigfooter">
                         <li>
-                          <NavLink to={"/about"}>About</NavLink>
+                          <NavLink to={"/about"}>Về chúng tôi</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"/my-account"}>My account</NavLink>
+                          <NavLink to={"/my-account"}>Tài khoản</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"/news"}>News</NavLink>
+                          <NavLink to={"/news"}>Tin tức</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"/events"}>Latest Event</NavLink>
+                          <NavLink to={"/events"}>Sự kiện</NavLink>
                         </li>
                         <li>
-                          <NavLink to={"/contact"}>Contact</NavLink>
+                          <NavLink to={"/contact"}>Liên hệ</NavLink>
                         </li>
                       </ul>
                     </div>
@@ -142,12 +142,12 @@ export default function Footer() {
                 <div className="bigfooter-wrap">
                   <div className="bigfooter-25-headtext">
                     <div className="top-heading has-square-corner">
-                      <h2 className="title">Newsletter</h2>
+                      <h2 className="title">Nhận tin</h2>
                     </div>
                   </div>
                   <div className="bigfooter-newsletter-body">
                     <div className="newsletter-body-container">
-                      Subscribe to Leitmotif newsletter this very day.
+                     Subcribe để nhận tin tức của chúng tôi mỗi ngày
                     </div>
                   </div>
                   <div className="newsletter-input">
@@ -174,7 +174,7 @@ export default function Footer() {
                                 required
                               />
                               <NavLink to={"#"}>
-                                I agree to all terms and policies of the company
+                                Tôi đồng ý với điều khoản và chính sách của công ty
                               </NavLink>
                             </label>
                           </div>

@@ -15,8 +15,8 @@ export default function Filmcrew() {
                   <PiFilmReelBold />
                 </div>
                 <div className="top-heading">
-                  <h3 className="sub-title">The Film Crew</h3>
-                  <h2 className="title">Professional Film Crew</h2>
+                  <h3 className="sub-title">Đội ngũ</h3>
+                  <h2 className="title">Đội ngũ làm phim chuyên nghiệp</h2>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@ export default function Filmcrew() {
                       <div className="ourteam-info">
                         <div className="name-job">
                           <h3 className="name">Kevin Martin</h3>
-                          <p className="job">Director</p>
+                          <p className="job">Đạo diễn</p>
                         </div>
                         <div className="socials">
                           <span>
@@ -65,7 +65,7 @@ export default function Filmcrew() {
                       <div className="ourteam-info">
                         <div className="name-job">
                           <h3 className="name">Jessica Brown</h3>
-                          <p className="job">Film Director</p>
+                          <p className="job">Đạo diễn</p>
                         </div>
                         <div className="socials">
                           <span>
@@ -98,7 +98,7 @@ export default function Filmcrew() {
                       <div className="ourteam-info">
                         <div className="name-job">
                           <h3 className="name">Mike Hardson</h3>
-                          <p className="job">Film Director</p>
+                          <p className="job">Đạo diễn</p>
                         </div>
                         <div className="socials">
                           <span>

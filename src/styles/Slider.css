@@ -181,6 +181,7 @@
     line-height: 1.5em;
     cursor: pointer;
     font-weight: 600;
+    display:inline-block;
 }
 
 .big-slider-button .button-booking {
@@ -195,6 +196,7 @@
   cursor: pointer;
   font-weight: 600;
   -webkit-transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .big-slider-release {
@@ -379,7 +381,7 @@
   pointer-events: none; 
 }
 
-.movie-trailer-media.active img {
+.movie-trailer-media-active img {
   border-color:#d96c2c;
 }
 
@@ -396,47 +398,9 @@
 }
 
 
-/* carousel */
-/* .carousel-item {
-  transition: transform 0.6s ease;
-  overflow: hidden; 
-}
 
-.carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-  display: block;
-}
 
-.carousel-item-next,
-.carousel-item-prev {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.carousel-item-next.carousel-item-left,
-.carousel-item-prev.carousel-item-right,
-.carousel-item.active {
-  transform: translateX(0);
-}
-
-.carousel-item-next.carousel-item-left {
-  transform: translateX(100%);
-}
-
-.carousel-item-prev.carousel-item-right {
-  transform: translateX(-100%);
-}
-
-.carousel-fade .carousel-item {
-  opacity: 0;
-  transition: opacity 0.6s ease; 
-}
-.carousel-fade .carousel-item.active {
-  opacity: 1;
-} */
-.carousel-indicators {
+/* .carousel-indicators {
   display: none;
 }
 .custom-carousel-dots-container {
@@ -474,4 +438,4 @@
 .movie-trailer-media .active {
   border: 2px solid #d96c2c;
 
-}
+} */

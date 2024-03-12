@@ -63,8 +63,8 @@ export default function Featuredmovie() {
                     <PiFilmReelFill className="heading-icon" />
                   </div>
                   <div className="top-heading">
-                    <h3 className="sub-title">Checkout Movies</h3>
-                    <h2 className="title">Top Featured Movies</h2>
+                    <h3 className="sub-title">Đừng bỏ lỡ</h3>
+                    <h2 className="title">Các phim nổi bật</h2>
                   </div>
                 </div>
               </div>
@@ -136,11 +136,11 @@ export default function Featuredmovie() {
                                   }
                                 >
                                   <span className="text-trailer">
-                                    Watch trailer
+                                    Xem trailer
                                   </span>
                                 </div>
                               </div>
-                              <button className="booking">Get ticket</button>
+                              <button className="booking">Đặt vé</button>
                             </div>
                           </div>
                         </div>

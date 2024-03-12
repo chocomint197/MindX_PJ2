@@ -126,7 +126,7 @@ export default function Eventdetail() {
                 <div className="eventdetail-btn">
                   <div className="registernow-btn">
                     <a href="#" target="_blank">
-                      Register Now
+                      Đăng ký ngay
                     </a>
                   </div>
                 </div>
@@ -140,19 +140,19 @@ export default function Eventdetail() {
                   <ul className="info-contact">
                     <li>
                       <span className="info">{event.timing}</span>
-                      <span className="label">Time</span>
+                      <span className="label">Thời gian</span>
                     </li>
                     <li>
                       <span className="info">{event.date}</span>
-                      <span className="label">Date</span>
+                      <span className="label">Ngày tháng</span>
                     </li>
                     <li>
                       <span className="info">{event.category}</span>
-                      <span className="label">Category</span>
+                      <span className="label">Phân mục</span>
                     </li>
                     <li>
                       <span className="info">{event.location}</span>
-                      <span className="label">Location</span>
+                      <span className="label">Địa điểm</span>
                     </li>
                   </ul>
                   <div className="event-share">

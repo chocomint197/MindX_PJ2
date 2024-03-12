@@ -40,9 +40,9 @@ export default function Upcomingevent() {
                       <PiFilmReelBold className="upcoming-icon" />
                     </div>
                     <div className="upcoming-left-heading">
-                      <h3 className="sub-title">Upcoming Event</h3>
+                      <h3 className="sub-title">Sự kiện sắp diễn ra</h3>
                       <h2 className="title">
-                        Register Yourself Now for the Events
+                        Đăng ký ngay để không bỏ lỡ những sự kiện này
                       </h2>
                     </div>
                     <p className="description">
@@ -60,7 +60,7 @@ export default function Upcomingevent() {
                 <div className="upcoming-left-btn-wrapper">
                   <NavLink className="button-link" to={"/#"}>
                     <span className="button-content-wrapper">
-                      <span className="button-text">More info</span>
+                      <span className="button-text">Xem chi tiết</span>
                     </span>
                   </NavLink>
                 </div>

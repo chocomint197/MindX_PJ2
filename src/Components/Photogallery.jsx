@@ -24,7 +24,7 @@ export default function Photogallery() {
                     <div className="gallery-wrap">
                         <div className="gallery-text-container">
                             <div className="gallery-text">
-                                Our Photo Gallery
+                                Thư viện ảnh
                             </div>
                         </div>
                     </div>

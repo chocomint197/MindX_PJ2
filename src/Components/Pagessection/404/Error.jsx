@@ -24,8 +24,8 @@ export default function Error() {
               alt=""
             />
             <div className="message">
-              <h3 className="message-title">Sorry, we can't find that page!</h3>
-              <p className="message-content">The page you are looking for was never existed</p>
+              <h3 className="message-title">Xin lỗi, chúng tôi không tìm thấy trang bạn muốn !</h3>
+              <p className="message-content">Có thể trang bạn tìm không tồn tại</p>
             </div>
             <form action="">
             <CiSearch />
@@ -36,7 +36,7 @@ export default function Error() {
               <input type="submit" />
             </form>
             <div className="backtohome">
-              <NavLink to={"/"}>Back to Home</NavLink>
+              <NavLink to={"/"}>Quay về trang chủ</NavLink>
             </div>
           </div>
         </div>
