@@ -3,28 +3,78 @@ import "../styles/Bannersidepage.css";
 import { IoIosArrowForward } from "react-icons/io";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { FirebaseContext } from "../../Firebase/FirebaseProvider";
-import { doc } from "firebase/firestore";
-export default function Bannersidepage({}) {
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-
+export default function Bannersidepage( props ) {
   const location = useLocation();
-  const [pageTitle, setPageTitle] = useState(""); 
+  const [pageTitle, setPageTitle] = useState("");
+  const firebaseContext = useContext(FirebaseContext);
+  const db = getFirestore();
+  const { id }  = useParams(); // get id from url
+  console.log(id)
 
   useEffect(() => {
+    const fetchPageTitle = async () => {
+      let title = "";
    
-    const fetchPageTitle = () => {
-      const pageName = location.pathname.split("/").filter(Boolean).pop();
-      const formattedTitle = decodeURIComponent(pageName.replace(/-/g, " "));
-      setPageTitle(formattedTitle);
+      // check if url has id
+      if (id) {
+        try {
+          let collectionRef;
+          let field;
+          switch (location.pathname) {
+            case "/events":
+              collectionRef = firebaseContext.eventCollection;
+              field = "title"; //title path for event collection
+              break;
+            case "/product":
+              collectionRef = firebaseContext.messCollect;
+              field = "nameFilm"; // title path for product collection
+              break;
+            case "/Blogs":
+              collectionRef = firebaseContext.blogCollection;
+              field = "heading"; // title path for blog colection
+              break;
+            default:
+              collectionRef = null;
+          }
+
+          if (collectionRef) {
+            // const docRef = doc(collectionRef, id );
+            // const docSnap = await getDoc(docRef);
+            // if (docSnap.exists()) {
+            //   title = docSnap.data()[field];
+            //   console.log(title)
+            // }
+            // const { messCollect } = useContext(FirebaseContext);
+            console.log(collectionRef)
+            let singledoc = doc(collectionRef,id );
+            let [mess, setmess] = useState(null);
+            useEffect(() => {
+              let getmess = async () => {
+                const data = await getDoc(singledoc);
+                setmess(data.data());
+              };
+              getmess();
+            }, []);
+            console.log(mess)
+          }
+        } catch (error) {
+          console.error("Error fetching page title:", error);
+        }
+      } else {
+        // if id doesnt exist then get title from innertext
+        const pageName = location.pathname.split("/").filter(Boolean).pop();
+        title = decodeURIComponent(pageName.replace(/-/g, " "));
+      }
+
+      setPageTitle(title);
     };
 
     fetchPageTitle();
-  }, [location.pathname]); 
-
-
-
-  
-
+  }, [firebaseContext, location.pathname, id]);
+  // console.log(firebaseContext.eventCollection.id)
+  console.log(Object.keys(props).length === 0)
   return (
     <section className="bannersidepage">
       <div className="bannersidepage-overlay"></div>
@@ -48,11 +98,11 @@ export default function Bannersidepage({}) {
                               <IoIosArrowForward />
                             </span>
                           </li>
-                          <li>{pageTitle}</li>
+                          <li>{Object.keys(props).length != 0 ? props?.mess.title : pageTitle}</li>
                         </ul>
                       </div>
                     </div>
-                    <h1 className="header_title">{pageTitle}</h1>
+                    <h1 className="header_title">{Object.keys(props).length != 0 ? props?.mess.title : pageTitle}</h1>
                   </div>
                 </div>
               </div>

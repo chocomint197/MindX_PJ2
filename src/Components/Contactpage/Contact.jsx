@@ -21,14 +21,14 @@ export default function Contact() {
     email: Yup.string()
       .email("Email không hợp lệ")
       .required("Email là bắt buộc"),
-    phoneNumber: Yup.string().required("Số điện thoại là bắt buộc"),
+    phoneNumber: Yup.number("").required("Số điện thoại là bắt buộc"),
     subject: Yup.string().required("Tiêu đề là bắt buộc"),
     comment: Yup.string().required("Nội dung là bắt buộc"),
   });
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     toast.success('Đã gửi thành công, cảm ơn bạn!');
-    // resetForm();
+    resetForm();
     setSubmitting(false);
   };
   return (

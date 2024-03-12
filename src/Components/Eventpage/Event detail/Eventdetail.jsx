@@ -40,10 +40,11 @@ export default function Eventdetail() {
       setEvent(mess);
     }
   }, [mess]);
+  console.log(mess)
   return (
     <div className="eventdetail-header">
       <Navbar />
-      <Bannersidepage />
+      <Bannersidepage mess={mess}/>
       <img
         src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/02/image-lines-header.jpg"
         className="headerimg"

@@ -1,0 +1,65 @@
+.cart-movies_header .navigation-bar.scrolled {
+    background-color: #fff;
+}
+
+.cart-movies_header .navbarContent {
+    justify-content: space-between;
+}
+
+.cart-movies_header .navbar-main .menu .arrow-down > a::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.7em;
+    border: solid #737373;
+    border-width: 0 2px 2px 0;
+    padding: 2px;
+    transform: rotate(45deg);
+    font-size: 0.5em;
+    font-weight: 500;
+    margin-bottom: 0.4em;
+}
+
+.cart-movies_header .navbar-main .menu li a {
+    color: #737373;
+}
+
+.cart-movies_header .navbar-main .menu li a:hover {
+    color: #d96c2c;
+
+}
+
+
+.cart-header {
+    max-width: 1190px;
+    margin: 0 auto;
+}
+
+.cart-header_container{
+    padding: 0px 10px;
+    color: #737373;
+}
+
+.cart-movies_header .navigation-bar {
+    position: relative;
+    max-width: 1190px;
+    margin: auto;
+}
+
+.cart-movies_header .navbar-main .menu li  {
+
+    font-size: 15px;
+    padding: 10px 15px 10px 24px;
+}
+
+.cart-header_container {
+    padding: 20px 0;
+
+}
+
+.cart-header_container p {
+    color: #737373;
+}
+
+.card-movies_header .navbar-brand img{
+    width: 144px;
+}
