@@ -60,7 +60,7 @@ export default function Navbar({ onSearch }) {
             <li className="menu-item">
             <NavLink to={"/"}>Trang Chủ</NavLink>
             </li>
-            <li className="menu-item">
+            <li className="menu-item arrow-down">
             <NavLink to={"/movies-all"}>Danh sách phim</NavLink>
 
               <ul className="sub-menu">
@@ -75,19 +75,19 @@ export default function Navbar({ onSearch }) {
                 </li>
               </ul>
             </li>
-            <li className="menu-item">
+            <li className="menu-item arrow-down">
             <NavLink to={"/events"}>Sự kiện</NavLink>
 
               <ul className="sub-menu">
                 <li>
-                <NavLink to={"/events"}>Sự kiện (chế độ ngang)</NavLink>
+                <NavLink to={"/events"}>Sự kiện</NavLink>
                 </li>
                 <li>
-                <NavLink to={"/events-list"}>Sự kiện (chế độ dọc)</NavLink>
+                <NavLink to={"/events-list"}>Đăng ký sự kiện</NavLink>
                 </li>
               </ul>
             </li>
-            <li className="menu-item">
+            <li className="menu-item arrow-down">
             <NavLink to={"/about"}>Thông tin</NavLink>
 
               <ul className="sub-menu">

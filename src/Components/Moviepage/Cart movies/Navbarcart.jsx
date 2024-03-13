@@ -44,10 +44,10 @@ export default function Navbarcart({  }) {
 
               <ul className="sub-menu">
                 <li>
-                <NavLink to={"/events"}>Sự kiện (chế độ ngang)</NavLink>
+                <NavLink to={"/events"}>Sự kiện</NavLink>
                 </li>
                 <li>
-                <NavLink to={"/events-list"}>Sự kiện (chế độ dọc)</NavLink>
+                <NavLink to={"/events-list"}>Đăng ký sự kiện</NavLink>
                 </li>
               </ul>
             </li>

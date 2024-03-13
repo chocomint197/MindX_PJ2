@@ -98,11 +98,11 @@ export default function Bannersidepage( props ) {
                               <IoIosArrowForward />
                             </span>
                           </li>
-                          <li>{Object.keys(props).length != 0 ? props?.mess.title : pageTitle}</li>
+                          <li>{Object.keys(props).length != 0 ? props?.mess?.title : pageTitle}</li>
                         </ul>
                       </div>
                     </div>
-                    <h1 className="header_title">{Object.keys(props).length != 0 ? props?.mess.title : pageTitle}</h1>
+                    <h1 className="header_title">{Object.keys(props).length != 0 ? props?.mess?.title : pageTitle}</h1>
                   </div>
                 </div>
               </div>
