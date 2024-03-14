@@ -1,48 +1,12 @@
 import React, { useState } from "react";
-import "../styles/Navbarstyle.css";
+import "../../../styles/Navbarstyle.css"
 import { IoMdSearch } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar({ onSearch }) {
-  const [showSearch, setShowSearch] = useState(false);
-  const [scroll, setScroll] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const clickSearch = () => {
-    setShowSearch(true);
-  };
-
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 0) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-
-  // handle search bar 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim() !== "") {
-      onSearch(searchTerm);
-      window.location.href = `/search/${searchTerm}`;
-
-    }
-  };
+export default function Navbarcart({  }) {
 
   return (
     <div className={`navigation-bar ${scroll ? "scrolled" : ""}`}>
@@ -50,7 +14,7 @@ export default function Navbar({ onSearch }) {
         <div className="navbar-brand">
           <a href="#" className=".orange-link">
             <img
-              src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/02/logo-white.png"
+              src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/02/logo-black.png"
               alt="Aovis – Film & Movie Booking WordPress Theme"
             />
           </a>
@@ -60,7 +24,7 @@ export default function Navbar({ onSearch }) {
             <li className="menu-item">
             <NavLink to={"/"}>Trang Chủ</NavLink>
             </li>
-            <li className="menu-item arrow-down">
+            <li className="menu-item arrow-down" >
             <NavLink to={"/movies-all"}>Danh sách phim</NavLink>
 
               <ul className="sub-menu">
@@ -109,38 +73,6 @@ export default function Navbar({ onSearch }) {
             <NavLink to={"/contact"}>Liên hệ</NavLink>            
             </li>
           </ul>
-        </div>
-        <div className="utility-bar">
-          <div className="search" >
-            <IoMdSearch className="navbar-icon search-icon" onClick={clickSearch}/>
-            {showSearch && (
-            <div className="search-popup">
-            <div className="search-popup-overlay">
-
-                <div className="search-box">
-                  <form action="" role="search" method="get" onSubmit={handleSearch}>
-                    <input
-                      type="search"
-                      className="search-field"
-                      placeholder="Search ..."
-                      value={searchTerm}
-                      title="Search for:"
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <button type="submit" className="search-submit" onClick={handleSearch}>
-                      <IoMdSearch className="search-icon-box" />
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            )}
-          </div>
-          <div className="login">
-            <a href="">
-              <CiUser className="navbar-icon login-icon" />
-            </a>
-          </div>
         </div>
       </div>
     </div>

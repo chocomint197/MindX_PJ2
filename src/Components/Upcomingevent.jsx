@@ -76,7 +76,7 @@ export default function Upcomingevent() {
                   <div className="main-event">
                     <div className="archieve_event">
                       {upcomingEvents.map((event) => (
-                        <div className="event-item">
+                        <div className="event-item" key={event.id}>
                           <div className="event-item-type1">
                             {/* Thumbnail */}
                             <div className="event-desc">

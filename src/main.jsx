@@ -22,6 +22,8 @@ import News from './Components/News section page/News.jsx'
 import Contact from './Components/Contactpage/Contact.jsx'
 import Eventdetail from './Components/Eventpage/Event detail/Eventdetail.jsx'
 import Searchpage from './Components/Searchpage/Searchpage.jsx'
+import Cartmovies from './Components/Moviepage/Cart movies/Cartmovies.jsx'
+import Newsdetail from './Components/News section page/Newsdetail.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -82,7 +84,15 @@ const router= createBrowserRouter([
   {
     path: "/search/:searchTerm",
     element: <Searchpage/>
-  }
+  },
+  {
+    path: "/abc",
+    element: <Cartmovies/>
+  },
+  {
+  path: "/blogs/:blogsId",
+  element: <Newsdetail/>
+}
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
     <FirebaseProvider>
@@ -90,5 +100,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
        <App />
       </RouterProvider>
      </FirebaseProvider>
+
     
 )

@@ -41,27 +41,27 @@ export default function Logoslider() {
               <Slider {...settings} ref={sliderRef} className="custom-slick">
                 <div className="carousel-logo-item">
                   <div className="logo-item-images">
-                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner1.png" alt="" />
+                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner1.png" />
                   </div>
                 </div>
                 <div className="carousel-logo-item">
                   <div className="logo-item-images">
-                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner2.png" alt="" />
+                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner2.png"  />
                   </div>
                 </div>
                 <div className="carousel-logo-item">
                   <div className="logo-item-images">
-                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner3.png" alt="" />
+                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner3.png"/>
                   </div>
                 </div>
                 <div className="carousel-logo-item">
                   <div className="logo-item-images">
-                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner4.png" alt="" />
+                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner4.png"  />
                   </div>
                 </div>
                 <div className="carousel-logo-item">
                   <div className="logo-item-images">
-                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner5.png" alt="" />
+                    <img src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/03/partner5.png"/>
                   </div>
                 </div>
               </Slider>
