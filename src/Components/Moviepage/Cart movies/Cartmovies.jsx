@@ -4,61 +4,250 @@ import Navbarcart from "../Cart movies/Navbarcart";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import SEATMAP from "../Cart movies/SEATMAP.png";
 import { FirebaseContext } from "../../../../Firebase/FirebaseProvider";
-import { getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { MdEventSeat } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
 
 export default function Cartmovies() {
-  const { chairCollection } = useContext(FirebaseContext);
-  const [chairs, setChairs] = useState([]);
+  const { movieId, scheduleId } = useParams();
 
+  const { chairCollection, messCollect, bookingCollection } =
+    useContext(FirebaseContext);
+  const [chairs, setChairs] = useState([]);
+  const [showData, setShowdata] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [bookedSeats, setBookedSeats] = useState([]);
+  const [listBookedSeats, setListBookedSeats] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const navigate = useNavigate();
+
+  // get data of movie from id
+  useEffect(() => {
+    const fetchShowData = async () => {
+      try {
+        const showtimeDoc = await getDoc(doc(messCollect, movieId));
+        setShowdata(showtimeDoc.data());
+      } catch (error) {
+        console.log("Error fetching showtime data:", error);
+      }
+    };
+
+    fetchShowData();
+  }, [messCollect, movieId]);
+
+  // data seat and check booked seat
   useEffect(() => {
     const fetchChairs = async () => {
       try {
-        const chairSnapShot = await getDocs(chairCollection);
-        const chairData = chairSnapShot.docs.map((doc) => ({
+        const chairSnapshot = await getDocs(chairCollection);
+        const chairData = chairSnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data(),
+          soGhe: doc.data(),
+          // isBooked: bookedSeats.some(seat => seat.soGhe === doc.data().soGhe)
         }));
         setChairs(chairData);
       } catch (error) {
-        console.log("Error fetching chairs:", error);
+        console.log("Error fetching chair data:", error);
       }
     };
+
     fetchChairs();
   }, [chairCollection]);
-  const renderSeats = () => {
-    return chairs.map((chair) => {
-      const { hang, danhSachGhe } = chair;
 
-      return (
-        <div className="seat-container">
-        <span className="seat-row-title">{hang}</span>
+  // booked seat
+  useEffect(() => {
+    const fetchChairs = async () => {
+      try {
+        const bookedSnapShot = await getDocs(bookingCollection);
+        const bookedData = bookedSnapShot.docs.map((doc) => ({
+          id: doc.id,
+          soGhe: doc.data(),
+        }));
+        setBookedSeats(bookedData);
+      } catch (error) {
+        console.log("Error fetching chair data:", error);
+      }
+    };
 
-        <div key={hang} className="seat-row">
-          <div className="seat-list">
-            {danhSachGhe.map((seat, index) => (
-              <span key={index} className="seat">
-                <MdEventSeat />
-                <span className="seat-count">{seat.soGhe}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-        </div>
-      );
-    });
+    fetchChairs();
+  }, [bookingCollection]);
+
+  // check seat
+  let temp = [];
+
+  const bookedSeatCheck = () => {
+    for (let i = 0; i < bookedSeats.length; i++) {
+      if (
+        bookedSeats[i].soGhe.idShow === scheduleId &&
+        bookedSeats[i].soGhe.idFilm === movieId
+      ) {
+        temp.push(bookedSeats[i].soGhe.soGhe);
+      }
+    }
   };
-// for side bar
-const [error, setError] = useState(false);
-const [showDiscountForm, setShowDiscountForm] = useState(false);
+  bookedSeatCheck();
 
-const handleDiscountSubmit = () => {
-  setError(true); 
+  // render seat
+ // render seat
+const renderSeats = () => {
+  chairs.sort((a, b) => a?.soGhe.hang.localeCompare(b?.soGhe.hang));
+  const normalSeats = [];
+  let instructionCol = null;
+  
+  chairs.forEach((item, index) => {
+    const formattedSeats = item.soGhe.danhSachGhe.map((seat) => ({ ...seat }));
+  
+    if (item?.soGhe.hang === "") {
+      instructionCol = formattedSeats;
+    } else {
+      normalSeats.push(formattedSeats);
+    }
+  });
+  
+  return (
+    <div >
+      {/* {instructionCol && instructionCol.length > 0 && (
+        <div className="seat-container">
+          {instructionCol.map((seat, index) => (
+            <span className="seat seat-col" key={index}>{seat.soGhe}</span>
+          ))}
+        </div>
+      )} */}
+  
+      {normalSeats.map((formattedSeats, index) => (
+        <div className="seat-container" key={index}>
+          {formattedSeats.map((seat, index) => {
+            let newTemp = temp.flat();
+            let checked = newTemp.includes(seat.soGhe);
+            let selectingChair = selectedSeats.includes(seat.soGhe);
+  
+            return (
+              <span
+                className={`seat ${checked ? "seatBooked" : ""} ${selectingChair ? "seatChoosing" : ""}`}
+                onClick={() => {
+                  if (!checked) {
+                    handleSeatClick(seat.soGhe);
+                  }
+                }}
+                key={index}
+              >
+                <div className="seat-detail">
+                  <span>85.000đ</span>
+                  <span>{seat.soGhe}</span>
+                </div>
+                <span className={`${checked ? "seatActive" : "seat-count"}`}>
+                  {seat.soGhe}
+                </span>
+                <MdEventSeat />
+              </span>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
 };
 
+
+  // for side bar
+  const [error, setError] = useState(false);
+  const [showDiscountForm, setShowDiscountForm] = useState(false);
+
+  const handleDiscountSubmit = () => {
+    setError(true);
+  };
+
+  const handleSeatClick = (seatNumber) => {
+    const isSeatSelected = selectedSeats.includes(seatNumber);
+
+    if (isSeatSelected) {
+      setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
+      setTotalPrice(totalPrice - 85000);
+    } else {
+      setSelectedSeats([...selectedSeats, seatNumber]);
+      setTotalPrice(totalPrice + 85000);
+    }
+  };
+
+  // check user
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+  // google login
+  const handleSignInWithGoogle = () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(`/checkout/${movieId}`, {
+          state: {
+            idFilm: movieId,
+            idShow: scheduleId,
+            soGhe: selectedSeats,
+            totalPrice: totalPrice,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleCheckout = () => {
+    if (user) {
+      navigate(`/checkout/${movieId}`, {
+        state: {
+          idFilm: movieId,
+          idShow: scheduleId,
+          soGhe: selectedSeats,
+          totalPrice: totalPrice,
+        },
+      });
+    } else {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          setUser(user);
+          navigate(`/checkout/${movieId}`, {
+            state: {
+              idFilm: movieId,
+              idShow: scheduleId,
+              soGhe: selectedSeats,
+              totalPrice: totalPrice,
+            },
+          });
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+  };
   return (
     <div className="cart-movies">
       <div className="cart-movies_header">
@@ -89,52 +278,136 @@ const handleDiscountSubmit = () => {
                 </div>
               </div>
             </div>
+            <ul className="seat-instruction">
+              <li className="available">
+                <span className="box">
+                  <MdEventSeat />
+                </span>
+                <span className="text">Ghế trống</span>
+              </li>
+              <li className="seat-notavailable">
+                <span className="box">
+                  <MdEventSeat />
+                </span>
+                <span className="text">Ghế đã được đặt</span>
+              </li>
+              <li className="choosing">
+                <span className="box">
+                  <MdEventSeat />
+                </span>
+                <span className="text">Ghế đang chọn</span>
+              </li>
+            </ul>
           </div>
           <div className="cart-sidebar">
-              <div className="cart-info">
-                <div className="cart-info_container">
-                    <h3 className="cart_title">
-                    Thông tin đặt vé
-                    </h3>
-                    <div className="content-card-info">
-                    <span className="cart_placeholder">Vui lòng chọn ghế bạn muốn</span>
-                    </div>
-
-                </div>
-                <div className="total-cart-info">
-                  <span className="text">Thành tiền</span>
-                  <span className="total-price">0đ</span>
-
-                </div>
-                <div className="cart-discount">
-                  <a onClick={() => setShowDiscountForm(true)} style={{display: showDiscountForm ? 'none' : 'block'}}>Nhập mã giảm giá</a>
-                  <div style={{ display: showDiscountForm ? 'block' : 'none' }} className="form-discount">
-                    <div className="input-discount-code">
-                      <input type="text" className="discount-code" placeholder="Nhập mã giảm giá" />
-                    </div>
-                    <button className="cart-discount-submit" onClick={(handleDiscountSubmit)}>
-                      Áp dụng
-                    </button>
-                    <IoIosCloseCircle onClick={() => setShowDiscountForm(false)}/>
-                    <p className="error" style={{display: !error ? 'none' : 'block' }}>
-                      Mã giảm giá không hợp lệ
-                    </p>
+            <div className="cart-info">
+              <div className="cart-info_container">
+                <h3 className="cart_title">Thông tin đặt vé</h3>
+                <div className="content-card-info">
+                  <span
+                    className="cart_placeholder"
+                    style={{
+                      display: selectedSeats.length == 0 ? "block" : "none",
+                    }}
+                  >
+                    Vui lòng chọn ghế bạn muốn
+                  </span>
+                  <div
+                    className="item-cart-info"
+                    style={{
+                      display: selectedSeats.length > 0 ? "flex" : "none",
+                    }}
+                  >
+                    <span>Số ghế</span>
+                    <span>Giá</span>
                   </div>
-               
-                </div>
-                <div className="cart-checkout">
-                  <div className="submit-load-more">
-                    <div className="load-more">
-
+                  <div className="content-card-item">
+                    <div
+                      className="item-info-map"
+                      style={{
+                        display: selectedSeats.length > 0 ? "flex" : "none",
+                      }}
+                    >
+                      <div className="info-type-ticket">
+                        <div className="wp-seat-info">
+                          {selectedSeats.map((seat) => (
+                            <span
+                              className={`seat-1 ${
+                                selectedSeats.length === 1
+                                  ? "selected-seat"
+                                  : ""
+                              }`}
+                            >
+                              {seat}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="info-sub-price">
+                        {totalPrice.toLocaleString()}đ
+                      </div>
                     </div>
                   </div>
-                  <NavLink to={'/'}>Đến trang thanh toán</NavLink>
                 </div>
               </div>
+              <div className="total-cart-info">
+                <span className="text">Thành tiền</span>
+                <span className="total-price">
+                  {totalPrice.toLocaleString()}đ
+                </span>
+              </div>
+              <div className="cart-discount">
+                <a
+                  onClick={() => setShowDiscountForm(true)}
+                  style={{ display: showDiscountForm ? "none" : "block" }}
+                >
+                  Nhập mã giảm giá
+                </a>
+                <div
+                  style={{ display: showDiscountForm ? "block" : "none" }}
+                  className="form-discount"
+                >
+                  <div className="input-discount-code">
+                    <input
+                      type="text"
+                      className="discount-code"
+                      placeholder="Nhập mã giảm giá"
+                    />
+                  </div>
+                  <button
+                    className="cart-discount-submit"
+                    onClick={handleDiscountSubmit}
+                  >
+                    Áp dụng
+                  </button>
+                  <IoIosCloseCircle
+                    onClick={() => setShowDiscountForm(false)}
+                  />
+                  <p
+                    className="error"
+                    style={{ display: !error ? "none" : "block" }}
+                  >
+                    Mã giảm giá không hợp lệ
+                  </p>
+                </div>
+              </div>
+              <div
+                className={
+                  selectedSeats.length > 0
+                    ? "cart-checkout-active"
+                    : "cart-checkout"
+                }
+              >
+                <div className="submit-load-more">
+                  <div className="load-more"></div>
+                </div>
+                <button onClick={handleCheckout}>Đến trang thanh toán</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

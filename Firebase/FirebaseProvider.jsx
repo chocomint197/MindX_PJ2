@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
 
+import { GoogleAuthProvider } from "firebase/auth";
 
 
 
@@ -18,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const FirebaseContext = createContext();
 
+const Googleprovider = new GoogleAuthProvider();
 
 
 
@@ -28,9 +30,9 @@ const FirebaseProvider = ({ children }) => {
   const blogCollection = collection(db, "Blogs");
   const faqCollection = collection(db, "faq");
   const chairCollection = collection(db, "dataChair")
-
+  const bookingCollection = collection(db, "bookingFilm")
   return (
-    <FirebaseContext.Provider value={{ app, messCollect, eventCollection, blogCollection, faqCollection, chairCollection }}>
+    <FirebaseContext.Provider value={{ app, messCollect, eventCollection, blogCollection, faqCollection, chairCollection, bookingCollection, Googleprovider }}>
       {children}
     </FirebaseContext.Provider>
   );

@@ -4,9 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FirebaseContext } from '../../Firebase/FirebaseProvider';
 import { query, limit, getDocs } from 'firebase/firestore';
 import { NavLink } from 'react-router-dom';
+import Ticket from './Moviepage/Cart movies/Ticket';
 export default function Nowplaying({ activeDot, handleDotClick}) {
   const { messCollect } = useContext(FirebaseContext);
   const [carouselItems, setCarouselItems] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,9 @@ export default function Nowplaying({ activeDot, handleDotClick}) {
     fetchData();
   }, [messCollect]);
   
-
+  const handleBookingClick = (movie) => {
+    setSelectedMovie(movie);
+  };
 
   return (
     <div className="playing-now">
@@ -59,13 +63,14 @@ export default function Nowplaying({ activeDot, handleDotClick}) {
                 </div>
               </div>
               <a href="#"><h3 className="movie-now-title">{item.nameFilm}</h3></a>
-              <button className="booking">Đặt vé</button>
+              <button className="booking" onClick={() => handleBookingClick(item)}>Đặt vé</button>
             </div>
           </div>
       ))}
     </div>
     </div>
-    
+    {selectedMovie && <Ticket selectedMovie={selectedMovie} />}
+
   </div>
 );
 }

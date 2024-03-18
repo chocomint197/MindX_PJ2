@@ -40,6 +40,7 @@ export default function News() {
 
 
   const newBlogs = blogs.slice(0, 3);
+  console.log(newBlogs)
 
   return (
     <section className="searchpage">
@@ -105,7 +106,7 @@ export default function News() {
               {newBlogs.map((post) => (
                 <div className="latest-post-item">
                   <div className="latest-post-item_media">
-                    <NavLink  to={`/blogs/${newBlogs.id}`}>
+                    <NavLink  to={`/blogs/${post.id}`}>
                       <img src={post.img} />
                     </NavLink>
                   </div>
@@ -117,7 +118,7 @@ export default function News() {
                       <span className="text-comment"> Comments</span>
                     </div>
                     <h4 className="post-title">
-                      <NavLink  to={`/blogs/${newBlogs.id}`}>{post.heading}</NavLink>
+                      <NavLink  to={`/blogs/${post.id}`}>{post.heading}</NavLink>
                     </h4>
                   </div>
                 </div>

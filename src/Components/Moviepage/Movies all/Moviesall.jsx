@@ -7,11 +7,16 @@ import { FirebaseContext } from "../../../../Firebase/FirebaseProvider";
 import { getDocs, query } from "firebase/firestore";
 import Footer from "../../Footer";
 import { NavLink } from "react-router-dom";
+import Ticket from "../Cart movies/Ticket";
 export default function Moviesall() {
   const { messCollect } = useContext(FirebaseContext);
 
   const [moviesItems, setMoviesItems] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const handleBookingClick = (movie) => {
+    setSelectedMovie(movie);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -76,8 +81,12 @@ export default function Moviesall() {
                           <a href="#">
                             <h3 className="movie-now-title">{item.nameFilm}</h3>
                           </a>
-                          <button className="booking">Get Ticket</button>
-                        </div>
+                          <button
+                                className="booking"
+                                onClick={() => handleBookingClick(item)}
+                              >
+                                Đặt vé
+                              </button>                        </div>
                       </div>
                     ))}
                 </div>
@@ -88,6 +97,12 @@ export default function Moviesall() {
       </div>
       {/* Footer */}
       <Footer/>
+      {selectedMovie && (
+        <Ticket
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function Moviecomingsoon() {
   // handle trailer popup
   const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -126,6 +127,9 @@ export default function Moviecomingsoon() {
         selectedVideoUrl={selectedVideoUrl}
         handleClosePopup={handleCloseTrailer}
       />
+      {selectedMovie && <Ticket selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />} 
+
     </div>
+
   );
 }

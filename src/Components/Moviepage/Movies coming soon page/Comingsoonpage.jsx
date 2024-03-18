@@ -92,7 +92,7 @@ export default function Comingsoonpage() {
                         className="booking"
                         onClick={() => handleWatchTrailer(item.videoTrailer)}
                       >
-                        Watch Trailer
+                        Xem trailer
                       </button>
                     </div>
                   </div>

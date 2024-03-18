@@ -9,6 +9,7 @@ import { FaPlay } from "react-icons/fa6";
 import ReactPlayer from "react-player";
 import { ImCancelCircle } from "react-icons/im";
 import Slider from "react-slick";
+import Ticket from "./Moviepage/Cart movies/Ticket";
 
 function ThumbnailSlider({
     slideItems,
@@ -111,6 +112,17 @@ function Headerslide() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideCount, setSlideCount] = useState(0);
 
+
+
+  const [selectedMovie, setSelectedMovie] = useState(null); // for ticket
+  const [ticketOpen, setTicketOpen] = useState(false);
+
+  const handleBookingClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+
+
   const handleSlideChange = (current) => {
     setCurrentSlide(current);
   };
@@ -187,7 +199,7 @@ function Headerslide() {
                   <a>
                     <button className="more-info">Chi tiết</button>
                   </a>
-                  <button className="button-booking">Đặt vé ngay</button>
+                  <button className="button-booking" onClick={() => handleBookingClick(item)}>Đặt vé ngay</button>
                 </div>
               </div>
 
@@ -208,6 +220,8 @@ function Headerslide() {
         slideCount={slideCount}
         setSlideCount={setSlideCount}
       />
+      {selectedMovie && <Ticket selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />}
+
     </div>
   );
 }

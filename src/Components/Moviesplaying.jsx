@@ -114,6 +114,7 @@ export default function Moviesplaying() {
             
         </div>
         </div>  
+        
     </div>
 
   );

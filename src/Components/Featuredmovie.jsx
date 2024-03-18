@@ -15,12 +15,16 @@ import {
 import { FirebaseContext } from "../../Firebase/FirebaseProvider";
 import Trailer from "./Trailer.jsx";
 import { NavLink } from "react-router-dom";
+import Ticket from "./Moviepage/Cart movies/Ticket.jsx";
 export default function Featuredmovie() {
   const { messCollect } = useContext(FirebaseContext);
   const [featuredMovies, setFeaturedMovies] = useState([]);
   const [selectedVideoUrl, setSelectedVideoUrl] = useState(""); // for handle trailer link
   const [isOpen, setIsOpen] = useState(false);
-
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const handleBookingClick = (movie) => {
+    setSelectedMovie(movie);
+  };
   // handle trailer popup
   // lấy data từ firebase
   useEffect(() => {
@@ -140,7 +144,12 @@ export default function Featuredmovie() {
                                   </span>
                                 </div>
                               </div>
-                              <button className="booking">Đặt vé</button>
+                              <button
+                                className="booking"
+                                onClick={() => handleBookingClick(movie)}
+                              >
+                                Đặt vé
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -189,6 +198,12 @@ export default function Featuredmovie() {
         selectedVideoUrl={selectedVideoUrl}
         handleClosePopup={handleClosePopup}
       />
+      {selectedMovie && (
+        <Ticket
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
     </div>
   );
 }

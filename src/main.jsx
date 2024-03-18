@@ -24,6 +24,8 @@ import Eventdetail from './Components/Eventpage/Event detail/Eventdetail.jsx'
 import Searchpage from './Components/Searchpage/Searchpage.jsx'
 import Cartmovies from './Components/Moviepage/Cart movies/Cartmovies.jsx'
 import Newsdetail from './Components/News section page/Newsdetail.jsx'
+import Checkout from './Components/Moviepage/Cart movies/Checkout.jsx'
+import Moviedetail from './Components/Moviepage/Movie detail/Moviedetail.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -86,12 +88,20 @@ const router= createBrowserRouter([
     element: <Searchpage/>
   },
   {
-    path: "/abc",
+    path: "/movies/:movieId/:scheduleId",
     element: <Cartmovies/>
   },
   {
   path: "/blogs/:blogsId",
   element: <Newsdetail/>
+},
+{
+  path: "/checkout/:id",
+  element: <Checkout/>
+},
+{
+  path: "/movies/:movieId",
+  element: <Moviedetail/>
 }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(

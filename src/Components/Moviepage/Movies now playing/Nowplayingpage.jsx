@@ -8,12 +8,17 @@ import "../../../styles/Moviesplaying.css";
 import "../Movies now playing/Nowplayingpage.css";
 import { NavLink } from "react-router-dom";
 import Footer from "../../Footer";
+import Ticket from "../Cart movies/Ticket";
 
 export default function Nowplayingpage() {
   const { messCollect } = useContext(FirebaseContext);
 
   const [nowPlaying, setNowPlaying] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const handleBookingClick = (movie) => {
+    setSelectedMovie(movie);
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +80,12 @@ export default function Nowplayingpage() {
                       <a href="#">
                         <h3 className="movie-now-title">{item.nameFilm}</h3>
                       </a>
-                      <button className="booking">Get Ticket</button>
+                      <button
+                                className="booking"
+                                onClick={() => handleBookingClick(item)}
+                              >
+                                Đặt vé
+                              </button>            
                     </div>
                   </div>
                 ))}
@@ -85,6 +95,12 @@ export default function Nowplayingpage() {
         </div>
       </div>
       <Footer/>
+      {selectedMovie && (
+        <Ticket
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
     </div>
   );
 }

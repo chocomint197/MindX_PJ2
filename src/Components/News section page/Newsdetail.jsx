@@ -58,11 +58,18 @@ export default function Newsdetail() {
     resetForm();
     setSubmitting(false);
   };
+
+  // latest posts
   useEffect(() => {
     const fetchLatestPosts = async () => {
       try {
         const querySnapshot = await getDocs(blogCollection);
-        const posts = querySnapshot.docs.map(doc => doc.data());
+        const posts = querySnapshot.docs.map(doc => {
+          return {
+            id: doc.id, 
+            ...doc.data() 
+          };
+        });
         setLatestPosts(posts.slice(0, 3));
       } catch (error) {
         console.error("Error fetching latest posts: ", error);
@@ -227,11 +234,11 @@ export default function Newsdetail() {
           <div id="text-2">
             <h4 className="widget-title">Bài viết mới nhất</h4>
             <div id="textwidget">
-              {latestPosts.slice(0, 3).map((blog) => (
+              {latestPosts.slice(0, 3).map((blogs) => (
                 <div className="latest-post-item">
                   <div className="latest-post-item_media">
-                    <NavLink to={`/blogs/${blog.id}`}>
-                      <img src={blog.img} />
+                    <NavLink to={`/blogs/${blogs.id}`}>
+                      <img src={blogs.img} />
                     </NavLink>
                   </div>
                   <div className="latest-post-item_info">
@@ -242,7 +249,7 @@ export default function Newsdetail() {
                       <span className="text-comment"> Comments</span>
                     </div>
                     <h4 className="post-title">
-                      <NavLink to={`/blogs/${blog.id}`}>{blog.heading}</NavLink>
+                      <NavLink to={`/blogs/${blogs.id}`}>{blogs.heading}</NavLink>
                     </h4>
                   </div>
                 </div>

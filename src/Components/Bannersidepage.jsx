@@ -11,7 +11,6 @@ export default function Bannersidepage( props ) {
   const firebaseContext = useContext(FirebaseContext);
   const db = getFirestore();
   const { id }  = useParams(); // get id from url
-  console.log(id)
 
   useEffect(() => {
     const fetchPageTitle = async () => {
@@ -73,8 +72,7 @@ export default function Bannersidepage( props ) {
 
     fetchPageTitle();
   }, [firebaseContext, location.pathname, id]);
-  // console.log(firebaseContext.eventCollection.id)
-  console.log(Object.keys(props).length === 0)
+
   return (
     <section className="bannersidepage">
       <div className="bannersidepage-overlay"></div>
