@@ -55,11 +55,11 @@ export default function Moviescategory() {
               <div className="moviescategory-grid">
                 {moviesItems.map((movie) => (
                   <div className="content-item" key={movie.id}>
-                    <a href="#">
+                      <NavLink to={`/movies/${item.id}`}>
                       <div className="now-playing-img">
                         <img src={movie.img} alt={movie.nameFilm} />
                       </div>
-                    </a>
+                    </NavLink>
                     <div className="now-playing-info">
                       <div className="categories-and-time">
                         <div className="movie-category-now-playing">
@@ -79,9 +79,9 @@ export default function Moviescategory() {
                           </span>
                         </div>
                       </div>
-                      <a href="#">
+                      <NavLink to={`/movies/${movie.id}`}>
                         <h3 className="movie-now-title">{movie.nameFilm}</h3>
-                      </a>
+                      </NavLink>
                       <button
                                 className="booking"
                                 onClick={() => handleBookingClick(movie)}

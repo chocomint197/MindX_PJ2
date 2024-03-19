@@ -68,7 +68,7 @@ export default function Moviecomingsoon() {
                     <div className="now-playing-item">
                       {comingSoonMovies.map((item) => (
                         <div className="content-item" key={item.id}>
-                          <NavLink to={"/#"}>
+                          <NavLink to={`/movies/${item.id}`}>
                             <div className="now-playing-img">
                               <img src={item.img} alt={item.nameFilm} />
                             </div>
@@ -97,11 +97,12 @@ export default function Moviecomingsoon() {
                                 </span>
                               </div>
                             </div>
-                            <a href="#">
+                            <NavLink to={`/movies/${item.id}`}>
+
                               <h3 className="movie-now-title">
                                 {item.nameFilm}
                               </h3>
-                            </a>
+                            </NavLink>
                             <button
                               className="booking watch-trailer-btn "
                               onClick={() =>

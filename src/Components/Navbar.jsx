@@ -48,12 +48,12 @@ export default function Navbar({ onSearch }) {
     <div className={`navigation-bar ${scroll ? "scrolled" : ""}`}>
       <div className="navbarContent">
         <div className="navbar-brand">
-          <a href="#" className=".orange-link">
+          <NavLink to={"/"} className=".orange-link">
             <img
               src="https://demo.ovatheme.com/aovis/wp-content/uploads/2023/02/logo-white.png"
               alt="Aovis – Film & Movie Booking WordPress Theme"
             />
-          </a>
+          </NavLink>
         </div>
         <div className="navbar-main">
           <ul className="menu">

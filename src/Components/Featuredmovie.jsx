@@ -96,15 +96,15 @@ export default function Featuredmovie() {
                     ) => (
                       <div className="featured-content-item" key={movie.id}>
                         <div className="featured-content-item-container">
-                          <a href="#">
+                        <NavLink to={`/movies/${movie.id}`}>
                             <div className="featured-movie-img">
                               <img src={movie.subImg[2]} alt={movie.nameFilm} />
                             </div>
-                          </a>
+                          </NavLink>
                           <div className="featured-movie-info">
-                            <a href="#">
+                          <NavLink to={`/movies/${movie.id}`}>
                               <h3 className="movie-title">{movie.nameFilm}</h3>
-                            </a>
+                            </NavLink>
                             <div className="categories-and-time">
                               <div className="movie-category">
                                 <FaTags className="category-tag" />

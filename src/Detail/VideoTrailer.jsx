@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ImCancelCircle } from 'react-icons/im';
 import ReactPlayer from 'react-player';
-import "../Detail/Style.css"
+import "./Style.css"
 
 export default function VideoTrailer({  isOpen, selectedVideoUrl, handleClosePopup  }) {
 

@@ -1,29 +1,31 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
-import { FirebaseContext } from '../../../Firebase/FirebaseProvider';
+import { FirebaseContext } from '../../Firebase/FirebaseProvider';
 import { getDoc, doc } from 'firebase/firestore';
 import MoreMovie from './MoreMovie';
 import { NavLink } from "react-router-dom";
-import "../Detail/Style.css"
+import "./Style.css"
 import VideoTrailer from './VideoTrailer'
-import Footer from '../Footer';
-import Navbar from '../Navbar';
+import Footer from '../Components/Footer'
+import Navbar from '../Components/Navbar'
 import { FaArrowAltCircleRight, FaPlay } from "react-icons/fa";
 import { FaArrowDown } from 'react-icons/fa6';
+import Bannersidepage from '../Components/Bannersidepage';
+import Ticket from '../Components/Moviepage/Cart movies/Ticket';
 
 export default function Detail() {
-    let param = useParams()
-    console.log(param.id)
-
+ 
+    const { movieId } = useParams()
     const { messCollect } = useContext(FirebaseContext);
     // render data
     const [carouselItems, setCarouselItems] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const docRef = doc(messCollect, param.id);
+                const docRef = doc(messCollect, movieId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setCarouselItems([{ id: docSnap.id, ...docSnap.data() }]);
@@ -37,7 +39,7 @@ export default function Detail() {
         };
 
         fetchData();
-    }, [messCollect, param.id]);
+    }, [messCollect, movieId]);
 
     // video trailer
     // handle trailer popup
@@ -54,12 +56,17 @@ export default function Detail() {
     const handleCloseTrailer = () => {
         setIsTrailerOpen(false);
     };
+
+    // ticket 
+    const handleBookingClick = (movie) => {
+        setSelectedMovie(movie);
+      }
     return (
         <div>
             {/* HEADER */}
             <div className="header">
                 <Navbar />
-
+                
             </div>
             <div className='productdetail'>
                 {/* BANNER */}
@@ -122,7 +129,7 @@ export default function Detail() {
                                     </div>
                                 </div>
                                 <div className='productdetail-content-button'>
-                                    <button>Đặt vé</button>
+                                    <button onClick={() => handleBookingClick(item)}>Đặt vé</button>
                                 </div>
                             </div>
                             <div className="productdetail-content-movie">
@@ -208,6 +215,12 @@ export default function Detail() {
             </div>
             {/* FOOTER */}
             <Footer />
+            {selectedMovie && (
+        <Ticket
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
         </div>
     )
 }

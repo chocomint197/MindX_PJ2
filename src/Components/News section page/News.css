@@ -395,3 +395,7 @@ border-top: 1px solid #f3f3f3;
     border-style: solid !important;
 
   }
+
+ ::placeholder {
+    color: #fff;
+ }

@@ -52,43 +52,45 @@ export default function Moviesall() {
             <div className="movieall-body-wrap">
               <div className="movieall-list-container">
                 <div className="movie-list-grid">
-                    {moviesItems.map((item) => (
-                      <div className="content-item" key={item.id}>
-                        <a href="#">
-                          <div className="now-playing-img">
-                            <img src={item.img} alt={item.nameFilm} />
-                          </div>
-                        </a>
-                        <div className="now-playing-info">
-                          <div className="categories-and-time">
-                            <div className="movie-category-now-playing">
+                  {moviesItems.map((item) => (
+                    <div className="content-item" key={item.id}>
+                <NavLink to={`/movies/${item.id}`}>
+                        <div className="now-playing-img">
+                          <img src={item.img} alt={item.nameFilm} />
+                        </div>
+                      </NavLink>
+                      <div className="now-playing-info">
+                        <div className="categories-and-time">
+                          <div className="movie-category-now-playing">
                             {item.infoFilm.catagory.map((category, index) => (
-                            <React.Fragment key={index}>
-                              <NavLink to={`/movies-category/${category}`}>
-                                {category}
-                              </NavLink>
-                              {index !== item.infoFilm.catagory.length - 1 && (
-                                <span>, </span>
-                              )}
-                            </React.Fragment>
-                          ))}
-                          <span> / </span>
-                              <span className="running-time">
-                                {item.infoFilm.time}
-                              </span>
-                            </div>
+                              <React.Fragment key={index}>
+                                <NavLink to={`/movies-category/${category}`}>
+                                  {category}
+                                </NavLink>
+                                {index !==
+                                  item.infoFilm.catagory.length - 1 && (
+                                  <span>, </span>
+                                )}
+                              </React.Fragment>
+                            ))}
+                            <span> / </span>
+                            <span className="running-time">
+                              {item.infoFilm.time}
+                            </span>
                           </div>
-                          <a href="#">
-                            <h3 className="movie-now-title">{item.nameFilm}</h3>
-                          </a>
-                          <button
-                                className="booking"
-                                onClick={() => handleBookingClick(item)}
-                              >
-                                Đặt vé
-                              </button>                        </div>
+                        </div>
+                        <NavLink to={`/movies/${item.id}`}>
+                          <h3 className="movie-now-title">{item.nameFilm}</h3>
+                        </NavLink>
+                        <button
+                          className="booking"
+                          onClick={() => handleBookingClick(item)}
+                        >
+                          Đặt vé
+                        </button>{" "}
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -96,7 +98,7 @@ export default function Moviesall() {
         </div>
       </div>
       {/* Footer */}
-      <Footer/>
+      <Footer />
       {selectedMovie && (
         <Ticket
           selectedMovie={selectedMovie}

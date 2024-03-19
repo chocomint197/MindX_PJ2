@@ -61,11 +61,11 @@ export default function Comingsoonpage() {
               <div className="nowplaying-movielist comingsoonpage">
                 {comingSoon.map((item) => (
                   <div className="content-item" key={item.id}>
-                    <a href="#">
+                <NavLink to={`/movies/${item.id}`}>
                       <div className="now-playing-img">
                         <img src={item.img} alt={item.nameFilm} />
                       </div>
-                    </a>
+                    </NavLink>
                     <div className="now-playing-info">
                       <div className="categories-and-time">
                         <div className="movie-category-now-playing">
@@ -85,9 +85,9 @@ export default function Comingsoonpage() {
                           </span>
                         </div>
                       </div>
-                      <a href="#">
+                      <NavLink to={`/movies/${item.id}`}>
                         <h3 className="movie-now-title">{item.nameFilm}</h3>
-                      </a>
+                      </NavLink>
                       <button
                         className="booking"
                         onClick={() => handleWatchTrailer(item.videoTrailer)}

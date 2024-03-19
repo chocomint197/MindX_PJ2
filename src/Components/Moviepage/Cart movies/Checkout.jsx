@@ -486,6 +486,7 @@ export default function Checkout() {
                               tôi
                             </p>
                           </div>
+                          <div className="btn_order_container">
                           <button
                             className="button alt"
                             name="checkout_place_order"
@@ -493,6 +494,7 @@ export default function Checkout() {
                           >
                             Xác nhận
                           </button>
+                          </div>
                         </div>
                       </div>
                     </div>

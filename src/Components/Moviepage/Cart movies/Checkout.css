@@ -599,3 +599,18 @@ table tfoot td {
     font-size: 18px;
     font-weight: bold;
 }
+
+.place-order::before {
+    content: "   ";
+    display: table;
+}
+
+.place-order::after {
+    content: "   ";
+    display: table;
+}
+
+.btn_order_container {
+    display:flex;
+    justify-content: flex-end;
+}

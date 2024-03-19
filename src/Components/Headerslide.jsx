@@ -10,6 +10,7 @@ import ReactPlayer from "react-player";
 import { ImCancelCircle } from "react-icons/im";
 import Slider from "react-slick";
 import Ticket from "./Moviepage/Cart movies/Ticket";
+import { NavLink } from "react-router-dom";
 
 function ThumbnailSlider({
     slideItems,
@@ -188,17 +189,17 @@ function Headerslide() {
                   <h3 className="big-slider-movie-category">
                     {item.infoFilm.catagory[0]}
                   </h3>
-                  <a href="">
+                  <NavLink to={`/movies/${item.id}`}>
                     <h1 className="big-slider-movie-title">{item.nameFilm}</h1>
-                  </a>
+                  </NavLink>
                 </div>
                 <p className="big-slider-excerpt">
                   Biên kịch và đạo diễn bởi {item.infoFilm.director}
                 </p>
                 <div className="big-slider-button">
-                  <a>
+                <NavLink to={`/movies/${item.id}`}>
                     <button className="more-info">Chi tiết</button>
-                  </a>
+                    </NavLink>
                   <button className="button-booking" onClick={() => handleBookingClick(item)}>Đặt vé ngay</button>
                 </div>
               </div>

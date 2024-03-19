@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useContext } from 'react'
-import "../Detail/Style.css"
-import { FirebaseContext } from '../../../Firebase/FirebaseProvider';
+import "./Style.css"
+import { FirebaseContext } from '../../Firebase/FirebaseProvider'; 
 import { getDocs, orderBy, query, limit, startAfter } from 'firebase/firestore';
 import { NavLink, useNavigate } from "react-router-dom";
 

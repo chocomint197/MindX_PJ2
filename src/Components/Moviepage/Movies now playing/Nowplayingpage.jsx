@@ -53,11 +53,11 @@ export default function Nowplayingpage() {
               <div className="nowplaying-movielist">
                 {nowPlaying.map((item) => (
                   <div className="content-item" key={item.id}>
-                    <a href="#">
+                <NavLink to={`/movies/${item.id}`}>
                       <div className="now-playing-img">
                         <img src={item.img} alt={item.nameFilm} />
                       </div>
-                    </a>
+                    </NavLink>
                     <div className="now-playing-info">
                       <div className="categories-and-time">
                         <div className="movie-category-now-playing">
@@ -77,9 +77,9 @@ export default function Nowplayingpage() {
                           </span>
                         </div>
                       </div>
-                      <a href="#">
+                      <NavLink to={`/movies/${item.id}`}>
                         <h3 className="movie-now-title">{item.nameFilm}</h3>
-                      </a>
+                      </NavLink>
                       <button
                                 className="booking"
                                 onClick={() => handleBookingClick(item)}
