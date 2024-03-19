@@ -6,8 +6,10 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbarcart({  }) {
-
+export default function Navbarcart({ isLoggedIn, onLogout  }) {
+  const handleLogoutClick = () => {
+    onLogout(); 
+  };
   return (
     <div className={`navigation-bar ${scroll ? "scrolled" : ""}`}>
       <div className="navbarContent">
@@ -72,6 +74,11 @@ export default function Navbarcart({  }) {
             <li className="menu-item">
             <NavLink to={"/contact"}>Liên hệ</NavLink>            
             </li>
+            {isLoggedIn && (
+              <li className="menu-item">
+                <button onClick={handleLogoutClick}>Đăng xuất</button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

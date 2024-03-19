@@ -14,8 +14,8 @@ import * as Yup from "yup";
 export default function Checkout() {
   let param = useParams();
   const data = useLocation();
-  const { totalPrice, idFilm, idShow, soGhe } = data.state
-  console.log(data.state)
+  const { totalPrice, idFilm, idShow, soGhe } = data?.state
+
   const [filmInfo, setFilmInfo] = useState(null);
   const [showInfo, setShowInfo] = useState(null);
   const { messCollect, bookingCollection } = useContext(FirebaseContext);
@@ -65,14 +65,14 @@ export default function Checkout() {
 
   // timer countdown
   const [seconds, setSeconds] = useState(600);
-  const navigateGoBack = useNavigate();
+  const navigate = useNavigate();
 ;
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => {
         if (prevSeconds === 0) {
           clearInterval(interval);
-          navigateGoBack(-1); 
+          navigate(-1); 
         }
         return prevSeconds - 1;
       });
@@ -101,8 +101,7 @@ export default function Checkout() {
   
     try {
       const docRef = await addDoc(bookingCollection , bookingData);
-      console.log(bookingData)
-      console.log("document id: ", docRef.id);
+      navigate("/success");
 
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -142,13 +141,13 @@ export default function Checkout() {
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
-              // handleSubmit(values);
+              handleSubmit(values);
               console.log(values);
-              // setSubmitting(false);
+              setSubmitting(false);
             }}
           >
             {({ isSubmitting }) => (
-              <Form name="checkout" method="post" class="checkout-form">
+              <Form name="checkout" method="get" class="checkout-form">
                 <div className="col2-set " id="customer-detail">
                   <div className="col-1">
                     <div className="billing-fields">
@@ -370,7 +369,7 @@ export default function Checkout() {
                 <h3 id="order_review_heading">Đơn hàng của bạn</h3>
                 <div id="order_review">
                   {filmInfo && showInfo && (
-                    <Form>
+                    <div>
                       <table className="shop_table">
                         <thead>
                           <tr>
@@ -488,7 +487,6 @@ export default function Checkout() {
                             </p>
                           </div>
                           <button
-                            type="submit"
                             className="button alt"
                             name="checkout_place_order"
                             id="place_order"
@@ -497,7 +495,7 @@ export default function Checkout() {
                           </button>
                         </div>
                       </div>
-                    </Form>
+                    </div>
                   )}
                 </div>
               </Form>

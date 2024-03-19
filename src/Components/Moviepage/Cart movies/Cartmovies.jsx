@@ -21,6 +21,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
+  signOut 
 } from "firebase/auth";
 
 export default function Cartmovies() {
@@ -248,10 +249,21 @@ const renderSeats = () => {
         });
     }
   };
+// logout
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log("Đăng xuất thành công!");
+      })
+      .catch((error) => {
+        console.error("Lỗi khi đăng xuất:", error);
+      });
+  };
   return (
     <div className="cart-movies">
       <div className="cart-movies_header">
-        <Navbarcart />
+        <Navbarcart isLoggedIn={user !== null}  onLogout={handleLogout}/>
         <div className="cart-header">
           <div className="cart-header_container">
             <p>

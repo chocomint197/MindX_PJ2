@@ -26,6 +26,7 @@ import Cartmovies from './Components/Moviepage/Cart movies/Cartmovies.jsx'
 import Newsdetail from './Components/News section page/Newsdetail.jsx'
 import Checkout from './Components/Moviepage/Cart movies/Checkout.jsx'
 import Moviedetail from './Components/Moviepage/Movie detail/Moviedetail.jsx'
+import Success from './Components/Moviepage/Cart movies/Success.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -102,7 +103,13 @@ const router= createBrowserRouter([
 {
   path: "/movies/:movieId",
   element: <Moviedetail/>
+},
+{
+  path:"/success",
+  element: <Success/>,
 }
+
+
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
     <FirebaseProvider>

@@ -22,7 +22,7 @@ export default function Ticket({ selectedMovie, setSelectedMovie }) {
         <div className="ticket-content">
           <ul className="toggle-date-tabs">
             {selectedMovie.movieShowSchedule.map((schedule, index) => {
-              const [day, month, year] = schedule.dayShow.split("/");
+              const [year, month, day] = schedule.dayShow.split("/");
 
               return (
                 <li
@@ -32,9 +32,9 @@ export default function Ticket({ selectedMovie, setSelectedMovie }) {
                 >
                   <div className="day">
                     <span className="D_m_day">
-                      <span className="m_day">0{month}</span>
+                      <span className="m_day">{month}</span>
                       <span className="D_day">
-                        {moment(schedule.dayShow, "DD/MM/YYYY").format("ddd")}
+                        {moment(schedule.dayShow, "YYYY/MM/DDD").format("ddd")}
                       </span>
                     </span>
                     <span className="d_day">

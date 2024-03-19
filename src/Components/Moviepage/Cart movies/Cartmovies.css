@@ -597,3 +597,13 @@ li .box {
 .seat-col {
     margin-right: 5px;
 }
+
+.menu-item button {
+    background: #fff;
+    border: none;
+
+}
+
+.menu-item button:hover {
+    color: #d96c2c;
+}
