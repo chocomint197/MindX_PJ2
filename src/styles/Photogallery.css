@@ -271,3 +271,16 @@
 .gallery-box {
     position: relative;
 }
+
+  /* responsive */
+  @media only screen and (max-width: 1366px) {
+    .photo-item-stage .photo-item {
+      width: 260px;
+    }
+    .photo-list {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+
+    }
+  }

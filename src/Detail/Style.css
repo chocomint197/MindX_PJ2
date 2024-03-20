@@ -292,7 +292,6 @@ h2{
     display: flex;
     list-style: none;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin-top: 30px;
 }
 .productdetail-content-cast li {

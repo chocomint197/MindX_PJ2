@@ -14,13 +14,11 @@ import * as Yup from "yup";
 export default function Checkout() {
   let param = useParams();
   const data = useLocation();
-  const { totalPrice, idFilm, idShow, soGhe } = data?.state
-
+  const {userId, totalPrice, idFilm, idShow, soGhe } = data?.state
   const [filmInfo, setFilmInfo] = useState(null);
   const [showInfo, setShowInfo] = useState(null);
   const { messCollect, bookingCollection } = useContext(FirebaseContext);
-
-
+  console.log(data.state)
 
   // get film data based on idFilm and idShow
   useEffect(() => {
@@ -92,11 +90,12 @@ export default function Checkout() {
       firstName: values.firstName,
       lastName: values.lastName,
       address: values.address,
-      // totalPrice: totalPrice,
+      totalPrice: totalPrice,
       idFilm: idFilm,
       idShow: idShow,
       soGhe: soGhe,
-      paymentMethod: paymentMethod
+      paymentMethod: paymentMethod,
+      uid: userId
     };
   
     try {

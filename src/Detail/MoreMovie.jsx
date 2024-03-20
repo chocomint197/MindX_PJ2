@@ -6,6 +6,7 @@ import { getDocs, orderBy, query, limit, startAfter } from 'firebase/firestore';
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { useParams } from 'react-router-dom'
+import Ticket from '../Components/Moviepage/Cart movies/Ticket';
 
 export default function MoreMovie() {
     let navigate = useNavigate()
@@ -40,6 +41,10 @@ export default function MoreMovie() {
 
     }
     console.log(randomFilm)
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const handleBookingClick = (movie) => {
+        setSelectedMovie(movie);
+      }
     return (
         <div>
             <div className="more-movie">
@@ -69,13 +74,18 @@ export default function MoreMovie() {
                             }} className='name-movie'>
                                 <h3>{item.nameFilm}</h3>
                             </button>
-                            <button className='get-ticket'>Đặt vé</button>
+                            <button className='get-ticket' onClick={() => handleBookingClick(item)}>Đặt vé</button>
                         </div>
                     </div>
                 ))}
             </div>
 
-
+            {selectedMovie && (
+        <Ticket      
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
         </div>
     )
 }

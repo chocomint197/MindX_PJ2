@@ -294,10 +294,6 @@
 }
 
 
-/* .content-item:hover button {
-    background-color: #d96c2c;
-    color: #fff;
-} */
 
 .dots {
     text-align: center;
@@ -337,3 +333,10 @@
 .movie-category-now-playing a:hover {
     color: #d96c2c;
 }
+
+/* responsive */
+@media only screen and (max-width: 1366px) {
+    .playing-show-content {
+      margin-left: 0;
+    }
+  }

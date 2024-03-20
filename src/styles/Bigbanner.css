@@ -333,3 +333,11 @@
   .icon-content-view:hover .content-video-icon {
     color: #d96c2c;
   }
+
+  /* responsive */
+@media only screen and (max-width: 1366px) {
+  .bigbanner-right-img {
+    left: 100px;
+    bottom: 163px;
+  }
+}

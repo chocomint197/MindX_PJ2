@@ -60,7 +60,6 @@ export default function Cartmovies() {
         const chairData = chairSnapshot.docs.map((doc) => ({
           id: doc.id,
           soGhe: doc.data(),
-          // isBooked: bookedSeats.some(seat => seat.soGhe === doc.data().soGhe)
         }));
         setChairs(chairData);
       } catch (error) {
@@ -104,7 +103,6 @@ export default function Cartmovies() {
   };
   bookedSeatCheck();
 
-  // render seat
  // render seat
 const renderSeats = () => {
   chairs.sort((a, b) => a?.soGhe.hang.localeCompare(b?.soGhe.hang));
@@ -123,13 +121,6 @@ const renderSeats = () => {
   
   return (
     <div >
-      {/* {instructionCol && instructionCol.length > 0 && (
-        <div className="seat-container">
-          {instructionCol.map((seat, index) => (
-            <span className="seat seat-col" key={index}>{seat.soGhe}</span>
-          ))}
-        </div>
-      )} */}
   
       {normalSeats.map((formattedSeats, index) => (
         <div className="seat-container" key={index}>
@@ -204,12 +195,15 @@ const renderSeats = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        console.log(user.uid)
+
         navigate(`/checkout/${movieId}`, {
           state: {
             idFilm: movieId,
             idShow: scheduleId,
             soGhe: selectedSeats,
             totalPrice: totalPrice,
+            userId: user.uid
           },
         });
       })
@@ -226,6 +220,7 @@ const renderSeats = () => {
           idShow: scheduleId,
           soGhe: selectedSeats,
           totalPrice: totalPrice,
+          userId: user.uid
         },
       });
     } else {
