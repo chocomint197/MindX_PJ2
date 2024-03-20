@@ -50,9 +50,9 @@ export default function MoreMovie() {
             <div className="more-movie">
                 {carouselItems.map((item) => (
                     <div key={item.id} className="more-item">
-                        <a href="#">
+                        <NavLink to={`/movies/${item.id}`}>
                             <img src={item.img[0]} alt={item.nameFilm} />
-                        </a>
+                        </NavLink>
                         <div className="more-item-contain">
                             <div className="more-item-info">
                                 {item.infoFilm.catagory.map((category, index) => (
@@ -69,7 +69,7 @@ export default function MoreMovie() {
                                 <p>{item.infoFilm.time}</p>
                             </div>
                             <button onClick={() => {
-                                navigate(`/detail/${item.id}`)
+                                navigate(`/movies/${item.id}`)
                                 window.location.reload()
                             }} className='name-movie'>
                                 <h3>{item.nameFilm}</h3>

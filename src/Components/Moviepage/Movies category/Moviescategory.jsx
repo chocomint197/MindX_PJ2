@@ -55,7 +55,7 @@ export default function Moviescategory() {
               <div className="moviescategory-grid">
                 {moviesItems.map((movie) => (
                   <div className="content-item" key={movie.id}>
-                      <NavLink to={`/movies/${item.id}`}>
+                      <NavLink to={`/movies/${movie.id}`}>
                       <div className="now-playing-img">
                         <img src={movie.img} alt={movie.nameFilm} />
                       </div>

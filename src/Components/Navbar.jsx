@@ -137,9 +137,9 @@ export default function Navbar({ onSearch }) {
             )}
           </div>
           <div className="login">
-            <a href="">
+            <NavLink to={"/info"}>
               <CiUser className="navbar-icon login-icon" />
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

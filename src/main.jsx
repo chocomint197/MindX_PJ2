@@ -25,9 +25,9 @@ import Searchpage from './Components/Searchpage/Searchpage.jsx'
 import Cartmovies from './Components/Moviepage/Cart movies/Cartmovies.jsx'
 import Newsdetail from './Components/News section page/Newsdetail.jsx'
 import Checkout from './Components/Moviepage/Cart movies/Checkout.jsx'
-import Moviedetail from './Components/Moviepage/Movie detail/Moviedetail.jsx'
 import Success from './Components/Moviepage/Cart movies/Success.jsx'
 import Detail from './Detail/Detail.jsx'
+import InfoCheckout from './Components/InfoCheckout.jsx'
 const router= createBrowserRouter([
   {
     path: "/",
@@ -108,6 +108,10 @@ const router= createBrowserRouter([
 {
   path:"/success",
   element: <Success/>,
+},
+{
+  path: "/info",
+  element: <InfoCheckout/>
 }
 
 

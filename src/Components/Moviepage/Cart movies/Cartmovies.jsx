@@ -195,7 +195,6 @@ const renderSeats = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user.uid)
 
         navigate(`/checkout/${movieId}`, {
           state: {
