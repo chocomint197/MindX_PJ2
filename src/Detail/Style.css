@@ -411,7 +411,226 @@ h2{
     width: 100px;
     margin-top: 10px;
 }
-.more-item:hover .get-ticket{
+.get-ticket:hover {
     background-color: #D96C2C;
     color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+
+    .productdetail{
+        font-size: 11pt;
+
+
+    }
+	.banner-img  img{
+
+        height: 200px;
+	}
+    .banner-content h2{
+        font-size: 16pt;
+    }
+    .banner-content-link{
+        font-size: 7pt;
+    }
+    /* MOVIE CONTENT */
+    .productdetail-content{
+        padding: 15px;
+        margin-top: 20px;
+    }
+    .productdetail-content-title{
+        display: flex;
+        flex-direction: column;
+
+    }
+    h2{
+        font-size: 22pt;
+        line-height: 40px;
+    }
+    .productdetail-content-button button{
+        padding: 20px 50px;
+    }
+    .productdetail-content-movie{
+        display: flex;
+        flex-direction: column-reverse;  
+    }
+    .movie-img img{
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .movie-video img{
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+    }
+    /* MOVIE INFO */
+    .productdetail-content-info{
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+    .productdetail-content-info table{
+        width: 100%;
+    }
+    .info-left{
+        margin: 0;
+    }
+    .info-title{
+        width: 40%;
+
+    }
+    .info-content{
+        width: 60%;
+    }
+    /* TOP CAST */
+    .productdetail-content-cast{
+        margin-top: 30px;
+    }
+    .productdetail-content-cast ul{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .productdetail-content-cast li{
+        width: 100%;
+
+
+    }
+    .cast-info{
+        margin-right: 0;
+    }
+    /* STORY LINE */
+    .productdetail-content-story{
+        margin-top: 30px;
+    }
+    .productdetail-content-story div {
+        margin: 15px 0;
+    }    
+    /* MORE MOVIE */
+    .productdetail-content-more{
+        margin-top: 30px;
+        width: 100%;
+    }
+    .more-movie{
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+    .more-item{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .more-item img{
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+	.productdetail{
+        font-size: 13pt;
+
+
+    }
+	.banner-img  img{
+
+        height: 400px;
+	}
+    .banner-content h2{
+        font-size: 25pt;
+    }
+    .banner-content-link{
+        font-size: 13pt;
+    }
+    /* MOVIE CONTENT */
+    .productdetail-content{
+        padding: 15px;
+        margin-top: 40px;
+    }
+    h2{
+        font-size: 20pt;
+        line-height: 40px;
+    }
+    .productdetail-content-movie{
+        display: flex;
+        flex-direction: column-reverse;  
+    }
+    .movie-img img{
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .movie-video img{
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+    }
+    /* MOVIE INFO */
+    .productdetail-content-info{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .info-left{
+        width: 50%;
+    }
+    .info-right{
+        width: 50%;
+
+    }
+    .productdetail-content-info table{
+        width: 100%;
+    }
+    .productdetail-content-info table tr{
+        width: 100%;
+
+    }
+    .info-title{
+        width: 40%;
+
+    }
+    .info-content{
+        width: 60%;
+    }
+    /* TOP CAST */
+    .productdetail-content-cast ul{
+        margin-top: 30px;
+        display: flex;
+
+    }
+    .productdetail-content-cast li{
+        width: 50%;
+
+    }
+    .cast-info{
+        margin-right: 30px;
+    }
+    /* MORE MOVIE */
+    .productdetail-content-more{
+        margin-top: 30px;
+        width: 100%;
+    }
+    .more-movie{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .more-item{
+        width: 50%;
+        margin-top: 10px;
+    }
+    .more-item img{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+  
+
 }

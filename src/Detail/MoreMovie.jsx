@@ -19,7 +19,7 @@ export default function MoreMovie() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const q = query(messCollect, limit(3));
+                const q = query(messCollect, limit(4));
                 const snapshot = await getDocs(q);
                 const data = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -51,7 +51,7 @@ export default function MoreMovie() {
                 {carouselItems.map((item) => (
                     <div key={item.id} className="more-item">
                         <NavLink to={`/movies/${item.id}`}>
-                            <img src={item.img[0]} alt={item.nameFilm} />
+                            <img src={item.img} alt={item.nameFilm} />
                         </NavLink>
                         <div className="more-item-contain">
                             <div className="more-item-info">

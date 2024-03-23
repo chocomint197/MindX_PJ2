@@ -134,7 +134,7 @@ export default function Detail() {
                             </div>
                             <div className="productdetail-content-movie">
                                 <div className="movie-img">
-                                    <img src={item.img[0]} alt="Movie IMG" />
+                                    <img src={item.img} alt="Movie IMG" />
                                 </div>
                                 {/* VIDEO TRAILER */}
                                 <div className="movie-video" >
