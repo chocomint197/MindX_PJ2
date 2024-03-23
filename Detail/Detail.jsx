@@ -57,10 +57,10 @@ export default function Detail() {
     return (
         <div>
             {/* HEADER */}
-            <div className="header">
+            {/* <div className="header">
                 <Navbar />
 
-            </div>
+            </div> */}
             <div className='productdetail'>
                 {/* BANNER */}
                 <div className="productdetail-banner" >
@@ -158,13 +158,38 @@ export default function Detail() {
                     {carouselItems.map((item) => (
                         <div className="productdetail-content-info" key={item.id}>
                             <div className="info-left">
-                                <p><strong>Đạo diễn: </strong>{item.infoFilm.director}</p>
+                                <table>
+                                    <tr>
+                                        <td className='info-title'><strong>Đạo diễn: </strong></td>
+                                        <td className='info-content'>{item.infoFilm.director}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='info-title'><strong>Quốc gia: </strong></td>
+                                        <td className='info-content'>{item.infoFilm.country}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='info-title'><strong>Độ tuổi: </strong></td>
+                                        <td className='info-content'>{item.infoFilm.rating}</td>
+                                    </tr>
+                                </table>
+                                {/* <p><strong>Đạo diễn: </strong>{item.infoFilm.director}</p>
                                 <p><strong>Quốc gia: </strong>{item.infoFilm.country}</p>
-                                <p><strong>Độ tuổi: </strong>{item.infoFilm.rating}</p>
+                                <p><strong>Độ tuổi: </strong>{item.infoFilm.rating}</p> */}
                             </div>
                             <div className="info-right">
-                                <p><strong>Ngày chiếu: </strong>{item.infoFilm.releaseDate}</p>
-                                <p><strong>Thời gian: </strong>{item.infoFilm.time}</p>
+                            <table>
+                                    <tr>
+                                        <td className='info-title'><strong>Ngày chiếu: </strong></td>
+                                        <td className='info-content'>{item.infoFilm.releaseDate}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='info-title'><strong>Thời gian: </strong></td>
+                                        <td className='info-content'>{item.infoFilm.time}</td>
+                                    </tr>
+                                    
+                                </table>
+                                {/* <p><strong>Ngày chiếu: </strong>{item.infoFilm.releaseDate}</p>
+                                <p><strong>Thời gian: </strong>{item.infoFilm.time}</p> */}
                             </div>
                         </div>
                     ))}
@@ -207,7 +232,7 @@ export default function Detail() {
                 </div >
             </div>
             {/* FOOTER */}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
